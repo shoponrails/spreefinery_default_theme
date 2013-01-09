@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'head' %}
+</head>
+<body>
+{% include 'nav_bar' %}
+<div class="container">
+    {{content_for_layout}}
+    <hr>
+    {% include 'footer' %}
+</div>
+<!-- /container -->
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="span4">
+        {{content_for_left_sidebar}}
+    </div>
+    <div class="span4">
+        <ul id="posts">
+            {% for post in posts %}
+            <li>
+                <h2><a href="{{ post | url_for: 'blog_post_path'  }}">{{ post.title }}</a></h2>
+                <p>{{ post.body }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="span4">
+        {{content_for_right_sidebar}}
+    </div>
+</div>
