@@ -1,23 +1,12 @@
 theme:
   name: "Default Theme"
   key: "default"
-  description: "The GreenDog Theme"
-  url: "http://example.com"
+  description: "The Default Theme"
+  url: "https://github.com/greendog"
   author: "Alexander Negoda"
   email: "alexander.negoda@gmail.com"
   version: "1.0"
 assigns:
   defaults:
     vars:
-      strapline: "test variable"
-    collections:
-      blogroll: "blogroll"
-  layouts:
-    site:
-      vars:
-        test: "test_key"
-
-
-  
-  
-
+      my_var: "test variable"
