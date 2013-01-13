@@ -1,7 +1,7 @@
 theme:
   name: "Default Theme"
   key: "default"
-  description: "The Default Theme"
+  description: "The Default Theme based on Twitter Bootstrap."
   url: "https://github.com/greendog"
   author: "Alexander Negoda"
   email: "alexander.negoda@gmail.com"
