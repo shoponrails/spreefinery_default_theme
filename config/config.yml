@@ -1,12 +1,16 @@
 theme:
-  name: "Default Theme"
+  name: "Default"
   key: "default"
-  description: "The Default Theme based on Twitter Bootstrap."
+  description: "The Default Theme based on Twitter Bootstrap"
   url: "https://github.com/greendog"
   author: "Alexander Negoda"
   email: "alexander.negoda@gmail.com"
   version: "1.0"
 assigns:
-  defaults:
-    vars:
-      my_var: "test variable"
+  vars:
+    my_var: "test variable"
+  logo: 'logo.png'
+  colors:
+    link_color: '#33ded3'
+    primary_color: '#ff0055'
+    secondary_color: '#333333'

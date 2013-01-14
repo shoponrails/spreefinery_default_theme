@@ -1,0 +1,8 @@
+<ul id="products">
+    {% for product in products %}
+    <li>
+        <h2>{{ product.name }}</h2>
+        Only {{ product.price | format_as_money }}
+    </li>
+    {% endfor %}
+</ul>
