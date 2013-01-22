@@ -1,0 +1,191 @@
+<div itemtype="http://schema.org/Product" itemscope="" data-hook="product_show">
+
+<div data-hook="product_left_part" class="columns six alpha">
+    <div data-hook="product_left_part_wrap" class="row">
+
+        <div data-hook="product_images" id="product-images">
+            <div data-hook="" id="main-image">
+                {% image_for_product style:product %}
+                <!--<img src="/spree/products/4/product/ror_baseball.jpeg?1356352984" itemprop="image" alt="Ruby on Rails Baseball Jersey"> -->
+
+            </div>
+            {% for image in product.variant_images %}
+                {% image.url_for | image_tag  %}
+            {% endfor %}
+        </div>
+
+        <div data-hook="product_properties">
+            <h6 class="product-section-title">Properties</h6>
+            <table data-hook="" class="table-display" id="product-properties">
+                <tbody>
+                <tr class="even">
+                    <td><strong>Manufacturer</strong></td>
+                    <td>Wilson</td>
+                </tr>
+                <tr class="odd">
+                    <td><strong>Brand</strong></td>
+                    <td>Wannabe Sports</td>
+                </tr>
+                <tr class="even">
+                    <td><strong>Model</strong></td>
+                    <td>JK1002</td>
+                </tr>
+                <tr class="odd">
+                    <td><strong>Type</strong></td>
+                    <td>Baseball Jersey</td>
+                </tr>
+                <tr class="even">
+                    <td><strong>Sleeve</strong></td>
+                    <td>long</td>
+                </tr>
+                <tr class="odd">
+                    <td><strong>Fabric</strong></td>
+                    <td>100% Cotton</td>
+                </tr>
+                <tr class="even">
+                    <td><strong>fit</strong></td>
+                    <td>loose</td>
+                </tr>
+                <tr class="odd">
+                    <td><strong>Gender</strong></td>
+                    <td>Men's</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+<div data-hook="product_right_part" class="columns ten omega">
+    <div data-hook="product_right_part_wrap" class="row">
+
+        <div data-hook="product_description" id="product-description">
+
+            <h1 itemprop="name" class="product-title">Ruby on Rails Baseball Jersey</h1>
+
+            <div data-hook="description" itemprop="description">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
+            </div>
+
+            <div data-hook="cart_form" id="cart-form">
+                <form method="post" action="/orders/populate?locale=en" accept-charset="UTF-8"><div style="margin:0;padding:0;display:inline"><input type="hidden" value="✓" name="utf8"><input type="hidden" value="LrsOm8htfekRct9VRdnvuZVpWZ8lOF5O27Q9IM7IlRw=" name="authenticity_token"></div>
+                    <div itemtype="http://schema.org/Offer" itemscope="" itemprop="offers" data-hook="inside_product_cart_form" id="inside-product-cart-form">
+
+                        <div class="columns five alpha" id="product-variants">
+                            <h6 class="product-section-title">Variants</h6>
+                            <ul>
+                                <li>
+                                    <input type="radio" value="325821322" name="products[1025786064]" id="products_1025786064_325821322" data-price="$19.99" checked="checked">
+                                    <label for="products_1025786064_325821322">
+                <span class="variant-description">
+                  Size: S, Color: Red
+                </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="529709246" name="products[1025786064]" id="products_1025786064_529709246" data-price="$19.99">
+                                    <label for="products_1025786064_529709246">
+                <span class="variant-description">
+                  Size: S, Color: Green
+                </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="947339321" name="products[1025786064]" id="products_1025786064_947339321" data-price="$19.99">
+                                    <label for="products_1025786064_947339321">
+                <span class="variant-description">
+                  Size: M, Color: Red
+                </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="664770399" name="products[1025786064]" id="products_1025786064_664770399" data-price="$19.99">
+                                    <label for="products_1025786064_664770399">
+                <span class="variant-description">
+                  Size: M, Color: Blue
+                </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="97292824" name="products[1025786064]" id="products_1025786064_97292824" data-price="$19.99">
+                                    <label for="products_1025786064_97292824">
+                <span class="variant-description">
+                  Size: M, Color: Green
+                </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="568516732" name="products[1025786064]" id="products_1025786064_568516732" data-price="$19.99">
+                                    <label for="products_1025786064_568516732">
+                <span class="variant-description">
+                  Size: L, Color: Red
+                </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="405540681" name="products[1025786064]" id="products_1025786064_405540681" data-price="$19.99">
+                                    <label for="products_1025786064_405540681">
+                <span class="variant-description">
+                  Size: L, Color: Blue
+                </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="265742438" name="products[1025786064]" id="products_1025786064_265742438" data-price="$19.99">
+                                    <label for="products_1025786064_265742438">
+                <span class="variant-description">
+                  Size: L, Color: Green
+                </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="205047256" name="products[1025786064]" id="products_1025786064_205047256" data-price="$21.99">
+                                    <label for="products_1025786064_205047256">
+                <span class="variant-description">
+                  Size: XL, Color: Red
+                </span>
+                                        <span class="price diff">(Add: $2.00)</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="columns five  omega " data-hook="product_price">
+
+                            <div id="product-price">
+                                <h6 class="product-section-title">Price</h6>
+                                <div><span itemprop="price" class="price selling">$19.99</span></div>
+                            </div>
+
+                            <div class="add-to-cart">
+                                <input type="number" value="1" name="quantity" min="1" max="88" id="quantity" class="title">
+                                <button type="submit" id="add-to-cart-button" class="large primary">
+                                    Add To Cart
+                                </button>        </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="alpha columns five omega" data-hook="" id="taxon-crumbs">
+            <h6 class="product-section-title">Look for similar items</h6>
+
+            <div data-hook="product_taxons">
+                <ul data-hook="" id="similar_items_by_taxon">
+                    <li><a href="/t/categories/clothing/shirts/t-shirts?locale=en">T-Shirts</a></li>
+                    <li><a href="/t/brands/ruby-on-rails?locale=en">Ruby on Rails</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+</div>
