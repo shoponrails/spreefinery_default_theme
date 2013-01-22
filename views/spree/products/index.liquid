@@ -1,3 +1,24 @@
+<ul>
+    {% for taxonomy in get_taxonomies %}
+    <li id="taxonomy_{{taxonomy.id}}">
+        <a href="#">{{taxonomy.name}}</a>
+        {{taxonomy.root | taxons_tree: taxon, 3}}
+    </li>
+    {% endfor %}
+</ul>
+
+<div id="jsTree" class="taxonomies jsTree jstree-apple">
+    <ul>
+        {% for taxonomy in get_taxonomies %}
+        <li id="taxonomy_{{taxonomy.id}}">
+            <a href="#">{{taxonomy.name}}</a>
+            {{taxonomy.root | taxons_tree: taxon, 3}}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
 <ul id="products">
     {% for product in products %}
     <li>
