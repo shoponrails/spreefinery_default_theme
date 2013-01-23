@@ -6,8 +6,6 @@
         <div data-hook="product_images" id="product-images">
             <div data-hook="" id="main-image">
                 {% image_for_product style:product %}
-                <!--<img src="/spree/products/4/product/ror_baseball.jpeg?1356352984" itemprop="image" alt="Ruby on Rails Baseball Jersey"> -->
-
             </div>
             {% for image in product.variant_images %}
                 {% image.url_for | image_tag  %}
