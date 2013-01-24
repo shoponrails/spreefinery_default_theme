@@ -1,0 +1,12 @@
+<ul class="thumbnails">
+    {% for product in products %}
+    <li class="span2">
+        <div class="thumbnail product">
+            <a href="{% url_helper method:product type:path arg:product %}">{% image_for_product style:small %}</a>
+            <div class="caption">
+                <a href="product.html"> <h5>{{ product.name }}</h5></a>  Price: {{ product.price | format_as_money }}<br><br>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

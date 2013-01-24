@@ -1,4 +1,4 @@
-theme:
+config:
   name: "Default"
   key: "default"
   description: "The Default Theme based on Twitter Bootstrap"
