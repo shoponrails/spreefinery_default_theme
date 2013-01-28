@@ -8,7 +8,7 @@
                 {% image_for_product style:product %}
             </div>
             {% for image in product.variant_images %}
-                {% image.url_for | image_tag  %}
+                {% image_tag image.url_for %}
             {% endfor %}
         </div>
 
