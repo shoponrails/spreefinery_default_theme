@@ -1,145 +1,26 @@
 /*
- *= require bootstrap/bootstrap
- *= require bootstrap/bootstrap-responsive
- *= require fancybox/jquery.fancybox
- *= require jquery.jgrowl
  * require_tree .
  *= require_self
  */
 
-*{
-  text-shadow: 1px 1px 1px #fff;
-  /*text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);*/
-  color: #959494;
-}
+@import "variables";
+@import "bootstrap";
+@import "bootswatch";
 
 body {
-    padding-top: 90px;
-    padding-bottom: 40px;
+  padding-top: 90px;
+  padding-bottom: 40px;
 }
 
-body.grid{
-  background-image: url("/assets/grid-18px-masked.png")
-}
+footer {
+  @extend .row;
 
-[class^="icon-"], [class*=" icon-"] {
-  background-image: url("/assets/bootstrap/glyphicons-halflings.png")
-}
+  .copy-right {
+    @include makeColumn(6);
+  }
 
-.icon-white {
-  background-image: url("/assets/bootstrap/glyphicons-halflings-white.png");
-}
-
-.navbar-inverse .navbar-inner {
-  border: none;
-  background-color: #FAFAFA;
-  background-image: -moz-linear-gradient(center top, #FAFAFA, #EAEAEA);
-  background-image: -ms-linear-gradient(center top, #FAFAFA, #EAEAEA);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), to(#EAEAEA));
-  background-image: -webkit-linear-gradient(center top, #FAFAFA, #EAEAEA);
-  background-image: -o-linear-gradient(center top, #FAFAFA, #EAEAEA);
-  background-image: linear-gradient(top, #FAFAFA, #EAEAEA);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#FAFAFA', endColorstr = '#EAEAEA', GradientType = 0);
-}
-
-.navbar .brand {
-  font-weight: bold;
-  padding-top: 20px;
-  height: 30px;;
-  /*text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);*/
-}
-
-#site-name {
-  display: block;
-}
-
-.navbar .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {
-  border-top-color: #000000;
-}
-
-.navbar .nav > li {
-  padding-right: 5px;
-}
-
-.navbar .nav .divider-vertical {
-  padding: 0;
-  height: 61px;
-}
-
-.navbar .nav > li > a {
-  color: #333333;
-  font-size: 18px;
-}
-
-.navbar .nav > li > a:hover {
-  background-color: #FAFAFA;
-  color: #7B7B7B;
-  border: 0px solid #C9C9C9;
-  border-radius: 5px 5px 5px 5px;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  transition: none;
-}
-
-.navbar .nav .active > a, .navbar .nav .active > a:hover {
-  background-color: #FAFAFA;
-  color: #7B7B7B;
-  border: 0;
-  border-radius: 5px 5px 5px 5px;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  transition: none;
-}
-
-.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle{
-  background-color: #FAFAFA;
-  color: #7B7B7B;
-}
-
-.navbar .nav .active > .dropdown-toggle:hover {
-  color: #7B7B7B;
-}
-
-.navbar-search {
-  margin-top: 15px;
-}
-
-.navbar-search .search-query {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  font-weight: normal;
-  line-height: 1.2;
-  color: #333;
-  background: #666;
-  background: rgba(255, 255, 255, 0.3);
-  border: 0;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  transition: none;
-}
-.navbar-search .search-query :-moz-placeholder {
-  color: #666;
-}
-.navbar-search .search-query::-webkit-input-placeholder {
-  color: #666;
-}
-.navbar-search .search-query:hover {
-  color: #333;
-  background-color: #999999;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-.navbar-search .search-query:focus, .navbar-search .search-query.focused {
-  padding: 5px 10px;
-  color: #333333;
-  text-shadow: 0 1px 0 #ffffff;
-  background-color: #ffffff;
-  border: 0;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-  outline: 0;
-}
-.nav-collapse.collapse{
-  padding-top: 10px;
-}
-
-.sidebar-nav {
-    padding: 9px 0;
+  .credit {
+    @include makeColumn(6);
+    text-align: right;
+  }
 }
