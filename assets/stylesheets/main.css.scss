@@ -12,6 +12,31 @@ body {
   padding-bottom: 40px;
 }
 
+form#new_refinery_user {
+  @extend .navbar-form;
+  text-align: right;
+}
+
+.main-banner {
+  @extend .hero-unit;
+}
+
+.main-content {
+  @extend .row;
+
+  .content-left {
+    @include makeColumn(3);
+  }
+
+  .content-middle {
+    @include makeColumn(3);
+  }
+
+  .content-right {
+    @include makeColumn(3);
+  }
+}
+
 footer {
   @extend .row;
 

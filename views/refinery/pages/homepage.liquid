@@ -1,17 +1,17 @@
 <!-- Main hero unit for a primary marketing message or call to action -->
 {% if content_for_hero-unit %}
-<div class="hero-unit">
+<div class="main-banner">
     {{content_for_hero-unit}}
 </div>
 {% endif %}
-<div class="row">
-    <div class="span3">
+<div class="main-content">
+    <div class="content-left">
        {{content_for_left_sidebar}}
     </div>
-    <div class="span6">
+    <div class="content-middle">
         {{content_for_body}}
     </div>
-    <div class="span3">
+    <div class="content-right">
         {{content_for_right_sidebar}}
     </div>
 </div>
