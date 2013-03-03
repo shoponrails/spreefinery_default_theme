@@ -1,9 +1,9 @@
-<form id="new_refinery_user" method="post" class="navbar-form pull-right new_refinery_user" action="/refinery/users/login" accept-charset="UTF-8">
+<form id="new_refinery_user" method="post" class="new_refinery_user" action="/refinery/users/login" accept-charset="UTF-8">
     <div style="margin:0;padding:0;display:inline">
         <input type="hidden" value="✓" name="utf8">
         <input type="hidden" value="{{form_authenticity_token}}" name="authenticity_token">
     </div>
-    <input class="span2" type="text" name="refinery_user[login]" id="refinery_user_login" placeholder="Login Or Email">
-    <input class="span2" type="password" name="refinery_user[password]" id="refinery_user_password" placeholder="Password" autocomplete="off">
-    <button type="submit" class="btn">Sign in</button>
+    <input class="input-small" type="text" name="refinery_user[login]" id="refinery_user_login" placeholder="Login Or Email">
+    <input class="input-small" type="password" name="refinery_user[password]" id="refinery_user_password" placeholder="Password" autocomplete="off">
+    <button type="submit" class="btn">Sign In</button>
 </form>

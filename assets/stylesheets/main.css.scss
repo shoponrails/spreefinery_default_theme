@@ -1,88 +1,60 @@
 /*
- *= require bootstrap/bootstrap.min
- *= require bootstrap/bootstrap-responsive
  *= require fancybox/jquery.fancybox
  *= require jquery.jgrowl
  * require_tree .
  *= require_self
  */
 
+@import "variables";
+@import "bootstrap";
+@import "bootswatch";
+
+@import "wymeditor";
+
 body {
   padding-top: 90px;
   padding-bottom: 40px;
 }
 
-body.grid{
-  background-image: url("/assets/grid-18px-masked.png")
+form#new_refinery_user {
+  @extend .navbar-form;
+  @extend .pull-right;
+  text-align: right;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  background-image: url("/assets/bootstrap/glyphicons-halflings.png")
+.main-banner {
+  @extend .hero-unit;
 }
 
-.icon-white {
-  background-image: url("/assets/bootstrap/glyphicons-halflings-white.png");
+.main-content {
+  @extend .row;
+
+  .content-left {
+    @include makeColumn(3);
+  }
+
+  .content-middle {
+    @include makeColumn(6);
+  }
+
+  .content-right {
+    @include makeColumn(3);
+  }
 }
 
-.navbar-inverse .navbar-inner, .breadcrumb, .nav-tabs > li {
-  border: none;
-  background-color: #FAFAFA;
-  background-image: -moz-linear-gradient(center top, #FAFAFA, #EAEAEA);
-  background-image: -ms-linear-gradient(center top, #FAFAFA, #EAEAEA);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), to(#EAEAEA));
-  background-image: -webkit-linear-gradient(center top, #FAFAFA, #EAEAEA);
-  background-image: -o-linear-gradient(center top, #FAFAFA, #EAEAEA);
-  background-image: linear-gradient(top, #FAFAFA, #EAEAEA);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#FAFAFA', endColorstr = '#EAEAEA', GradientType = 0);
+footer {
+  @extend .row;
+
+  .copy-right {
+    @include makeColumn(3);
+  }
+
+  .credit {
+    @include makeColumn(9);
+    text-align: right;
+  }
 }
 
-.navbar .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {
-  border-top-color: #000000;
-}
-
-.navbar .nav > li {
-  padding-right: 5px;
-}
-
-.navbar .nav .divider-vertical {
-  padding: 0;
-  height: 61px;
-}
-
-.navbar .nav > li > a {
-  color: #333333;
-  font-size: 18px;
-}
-
-.navbar .nav > li > a:hover {
-  background-color: #FAFAFA;
-  color: #7B7B7B;
-  border: 0px solid #C9C9C9;
-  border-radius: 5px 5px 5px 5px;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  transition: none;
-}
-
-.navbar .nav .active > a, .navbar .nav .active > a:hover {
-  background-color: #FAFAFA;
-  color: #7B7B7B;
-  border: 0;
-  border-radius: 5px 5px 5px 5px;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0px rgba(255, 255, 255, 0.75);
-  transition: none;
-}
-
-
-.navbar .nav .active > .dropdown-toggle:hover {
-  color: #7B7B7B;
-}
-.navbar-inner{
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-
-.no_margin_left {
-  margin-left: 0;
+.line_item_quantity {
+  @extend .input-small;
 }

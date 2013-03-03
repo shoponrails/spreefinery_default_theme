@@ -1,0 +1,20 @@
+<div id="jsTree" class="taxonomies jsTree jstree-apple">
+    <ul>
+        {% for taxonomy in get_taxonomies %}
+        <li id="taxonomy_{{taxonomy.id}}">
+            <a href="#">{{taxonomy.name}}</a>
+            {{taxonomy.root | taxons_tree: taxon, 3}}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<style type="text/css">
+    .jstree-apple > ul {
+        background: none repeat scroll 0 0 transparent;
+    }
+
+    .jstree-apple.jstree-focused {
+        background: none repeat scroll 0 0 transparent;
+    }
+</style>

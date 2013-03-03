@@ -78,14 +78,20 @@
                     <ul class="nav nav-list">{% variants_for product %}</ul>
                 </div>
                 {% endif %}
-                    <div class="span3 no_margin_left">
+                    <div class="span3">
                         <label>Qty:</label>
-                        <input type="text" placeholder="1" class="span1">
+                        {% if product.on_sale? %}
+                                {% if product.has_variants? %}
+                                 <input type="text" placeholder="1" class="span1" value="1" name="quantity" min="1" max="{{ product.on_hand }}" size="3">
+                                {% else %}
+                                    <input type="text" placeholder="1" class="span1" value="1" name="variants[{{ product.master.id }}]" min="1" max="{{ product.on_hand }}" size="3">
+                                {% endif %}
+                            {% else %}
+                                <h3>Out of Stock</h3>
+                        {% endif %}
                         <button type="submit" class="btn btn-primary">Add to cart</button>
                     </div>
-                    <div class="span1">
-                        - OR -
-                    </div>
+                    <div class="span">- OR -</div>
                     <div class="span2">
                         <p><a href="#">Add to Wish List</a></p>
                         <p><a href="compare.html">Add to Compare</a></p>
@@ -94,12 +100,21 @@
             </div>
             <div class="span6">
                 <p>
-                    <span class="star-rating-control"><div class="rating-cancel"><a title="Cancel Rating"></a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div></span><input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
+                    <span class="star-rating-control">
+                        <div class="rating-cancel"><a title="Cancel Rating"></a></div>
+                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
+                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
+                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
+                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
+                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
+                    </span>
+                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
                     <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
                     <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
                     <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
                     <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">&nbsp;&nbsp;
-                    <a href="#">0 reviews</a>  |  <a href="#">Write a review</a></p>
+                    <a href="#">0 reviews</a>  |  <a href="#">Write a review</a>
+                </p>
             </div>
         </div>
     </div>
@@ -114,8 +129,7 @@
                 </ul>
                 <div class="tab-content">
                     <div id="1" class="tab-pane active">
-                        <p>Just when you thought iMac had everything, now there's even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife '08, and it's more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.
-                        </p>
+                        <p>{{ product | product_description }}</p>
                     </div>
                     <div id="2" class="tab-pane">
                         <p>There are no reviews for this product.</p>
@@ -149,17 +163,6 @@
                                     </div>
                                 </div>
                             </li>
-
-                            <li class="span2">
-                                <div class="thumbnail">
-                                    <a href="product.html"><img src="http://placehold.it/220x180" alt=""></a>
-                                    <div class="caption">
-                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                                    </div>
-                                </div>
-                            </li>
-
-
                         </ul>
                     </div>
                 </div>
