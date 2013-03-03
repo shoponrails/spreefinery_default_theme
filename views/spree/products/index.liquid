@@ -3,17 +3,8 @@
     <script src="/assets/products.js" type="text/javascript"></script>
 {% end_content_for %}
 <div class="row">
-    <div class="span3">
-        <div id="jsTree" class="taxonomies jsTree jstree-apple">
-            <ul>
-                {% for taxonomy in get_taxonomies %}
-                <li id="taxonomy_{{taxonomy.id}}">
-                    <a href="#">{{taxonomy.name}}</a>
-                    {{taxonomy.root | taxons_tree: taxon, 3}}
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
+    <div class="span3 well">
+        {% include 'spree/jstree_taxonomies' %}
     </div>
     <div class="span6 product_list">
         {% include 'spree/products' %}

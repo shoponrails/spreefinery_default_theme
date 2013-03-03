@@ -1,189 +1,175 @@
-<div itemtype="http://schema.org/Product" itemscope="" data-hook="product_show">
+{% content_for head %}
+<script type="text/javascript" src="/assets/product.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/product.css">
+{% end_content_for %}
 
-<div data-hook="product_left_part" class="columns six alpha">
-    <div data-hook="product_left_part_wrap" class="row">
 
-        <div data-hook="product_images" id="product-images">
-            <div data-hook="" id="main-image">
-                {% image_for_product style:product %}
-            </div>
-            {% for image in product.variant_images %}
-                {% image_tag image.url_for %}
-            {% endfor %}
-        </div>
+<div class="row">
+<div class="span3 product_list">
 
-        <div data-hook="product_properties">
-            <h6 class="product-section-title">Properties</h6>
-            <table data-hook="" class="table-display" id="product-properties">
-                <tbody>
-                <tr class="even">
-                    <td><strong>Manufacturer</strong></td>
-                    <td>Wilson</td>
-                </tr>
-                <tr class="odd">
-                    <td><strong>Brand</strong></td>
-                    <td>Wannabe Sports</td>
-                </tr>
-                <tr class="even">
-                    <td><strong>Model</strong></td>
-                    <td>JK1002</td>
-                </tr>
-                <tr class="odd">
-                    <td><strong>Type</strong></td>
-                    <td>Baseball Jersey</td>
-                </tr>
-                <tr class="even">
-                    <td><strong>Sleeve</strong></td>
-                    <td>long</td>
-                </tr>
-                <tr class="odd">
-                    <td><strong>Fabric</strong></td>
-                    <td>100% Cotton</td>
-                </tr>
-                <tr class="even">
-                    <td><strong>fit</strong></td>
-                    <td>loose</td>
-                </tr>
-                <tr class="odd">
-                    <td><strong>Gender</strong></td>
-                    <td>Men's</td>
-                </tr>
-                </tbody>
-            </table>
+    <!-- start sidebar -->
+    <ul class="breadcrumb">
+        <li>Categories</li>
+    </ul>
+    <ul class="nav nav-list">
+        {% for taxonomy in get_taxonomies %}
+        <li class="nav-header">
+            <a href="{{ taxonomy.root | seo_url }}">{{taxonomy.name}}</a>
+            {{taxonomy.root | taxons_tree: taxon, 1}}
+        </li>
+        <li class="divider"></li>
+        {% endfor %}
+    </ul>
 
-        </div>
 
-    </div>
 </div>
 
-<div data-hook="product_right_part" class="columns ten omega">
-    <div data-hook="product_right_part_wrap" class="row">
+<div class="span9">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="#">Audio</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            <a href="#">MP3 players</a>
+        </li>
+    </ul>
 
-        <div data-hook="product_description" id="product-description">
 
-            <h1 itemprop="name" class="product-title">Ruby on Rails Baseball Jersey</h1>
-
-            <div data-hook="description" itemprop="description">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-            </div>
-
-            <div data-hook="cart_form" id="cart-form">
-                <form method="post" action="/orders/populate?locale=en" accept-charset="UTF-8"><div style="margin:0;padding:0;display:inline"><input type="hidden" value="✓" name="utf8"><input type="hidden" value="LrsOm8htfekRct9VRdnvuZVpWZ8lOF5O27Q9IM7IlRw=" name="authenticity_token"></div>
-                    <div itemtype="http://schema.org/Offer" itemscope="" itemprop="offers" data-hook="inside_product_cart_form" id="inside-product-cart-form">
-
-                        <div class="columns five alpha" id="product-variants">
-                            <h6 class="product-section-title">Variants</h6>
-                            <ul>
-                                <li>
-                                    <input type="radio" value="325821322" name="products[1025786064]" id="products_1025786064_325821322" data-price="$19.99" checked="checked">
-                                    <label for="products_1025786064_325821322">
-                <span class="variant-description">
-                  Size: S, Color: Red
-                </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="529709246" name="products[1025786064]" id="products_1025786064_529709246" data-price="$19.99">
-                                    <label for="products_1025786064_529709246">
-                <span class="variant-description">
-                  Size: S, Color: Green
-                </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="947339321" name="products[1025786064]" id="products_1025786064_947339321" data-price="$19.99">
-                                    <label for="products_1025786064_947339321">
-                <span class="variant-description">
-                  Size: M, Color: Red
-                </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="664770399" name="products[1025786064]" id="products_1025786064_664770399" data-price="$19.99">
-                                    <label for="products_1025786064_664770399">
-                <span class="variant-description">
-                  Size: M, Color: Blue
-                </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="97292824" name="products[1025786064]" id="products_1025786064_97292824" data-price="$19.99">
-                                    <label for="products_1025786064_97292824">
-                <span class="variant-description">
-                  Size: M, Color: Green
-                </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="568516732" name="products[1025786064]" id="products_1025786064_568516732" data-price="$19.99">
-                                    <label for="products_1025786064_568516732">
-                <span class="variant-description">
-                  Size: L, Color: Red
-                </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="405540681" name="products[1025786064]" id="products_1025786064_405540681" data-price="$19.99">
-                                    <label for="products_1025786064_405540681">
-                <span class="variant-description">
-                  Size: L, Color: Blue
-                </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="265742438" name="products[1025786064]" id="products_1025786064_265742438" data-price="$19.99">
-                                    <label for="products_1025786064_265742438">
-                <span class="variant-description">
-                  Size: L, Color: Green
-                </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="radio" value="205047256" name="products[1025786064]" id="products_1025786064_205047256" data-price="$21.99">
-                                    <label for="products_1025786064_205047256">
-                <span class="variant-description">
-                  Size: XL, Color: Red
-                </span>
-                                        <span class="price diff">(Add: $2.00)</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="columns five  omega " data-hook="product_price">
-
-                            <div id="product-price">
-                                <h6 class="product-section-title">Price</h6>
-                                <div><span itemprop="price" class="price selling">$19.99</span></div>
-                            </div>
-
-                            <div class="add-to-cart">
-                                <input type="number" value="1" name="quantity" min="1" max="88" id="quantity" class="title">
-                                <button type="submit" id="add-to-cart-button" class="large primary">
-                                    Add To Cart
-                                </button>        </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
+    <div class="row">
+        <div class="span9">
+            <h1>{{ product.name }}</h1>
         </div>
-
-        <div class="alpha columns five omega" data-hook="" id="taxon-crumbs">
-            <h6 class="product-section-title">Look for similar items</h6>
-
-            <div data-hook="product_taxons">
-                <ul data-hook="" id="similar_items_by_taxon">
-                    <li><a href="/t/categories/clothing/shirts/t-shirts?locale=en">T-Shirts</a></li>
-                    <li><a href="/t/brands/ruby-on-rails?locale=en">Ruby on Rails</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-
     </div>
+    <hr>
+
+    <div class="row">
+        <div class="span3">
+            <a class="zoom"  href="{% product_image_url object:product, style:original %}">{% image_for_product style:product %}</a>
+            <ul class="thumbnails">
+
+                <li class="span1">
+                    <a class="thumbnail" href="#">
+                        {% image_for_product style:mini %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="span6">
+            <div class="span6">
+                <address>
+                    {% for product_property in product_properties %}
+                        <strong>{{ product_property.property.presentation }}:</strong>
+                        <span>{{ product_property.value }}</span>
+                        <br>
+                    {% endfor %}
+                </address>
+            </div>
+            <div class="span6"><h2><strong>Price: {{ product.price_with_currency }}</strong></h2></div>
+            <div class="span6">
+                {% error_messages_for order %}
+                {% form_for 'order' as:post url_helper:populate_orders_path, html:"{ id:'basket', class:'product-cart form-inline'}" %}
+                {% if product.has_variants? %}
+                <div class="span6">
+                    <h2>Available Options</h2>
+                    <ul class="nav nav-list">{% variants_for product %}</ul>
+                </div>
+                {% endif %}
+                    <div class="span3 no_margin_left">
+                        <label>Qty:</label>
+                        <input type="text" placeholder="1" class="span1">
+                        <button type="submit" class="btn btn-primary">Add to cart</button>
+                    </div>
+                    <div class="span1">
+                        - OR -
+                    </div>
+                    <div class="span2">
+                        <p><a href="#">Add to Wish List</a></p>
+                        <p><a href="compare.html">Add to Compare</a></p>
+                    </div>
+                {% endform_for %}
+            </div>
+            <div class="span6">
+                <p>
+                    <span class="star-rating-control"><div class="rating-cancel"><a title="Cancel Rating"></a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div><div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div></span><input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
+                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
+                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
+                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
+                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">&nbsp;&nbsp;
+                    <a href="#">0 reviews</a>  |  <a href="#">Write a review</a></p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="span9">
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#1">Description</a></li>
+                    <li><a data-toggle="tab" href="#2">Reviews</a></li>
+                    <li><a data-toggle="tab" href="#3">Related products</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="1" class="tab-pane active">
+                        <p>Just when you thought iMac had everything, now there's even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife '08, and it's more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.
+                        </p>
+                    </div>
+                    <div id="2" class="tab-pane">
+                        <p>There are no reviews for this product.</p>
+                    </div>
+                    <div id="3" class="tab-pane">
+                        <ul class="thumbnails related_products">
+
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
+                                    <div class="caption">
+                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
+                                    <div class="caption">
+                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
+                                    <div class="caption">
+                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a href="product.html"><img src="http://placehold.it/220x180" alt=""></a>
+                                    <div class="caption">
+                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
 </div>
 
 </div>
