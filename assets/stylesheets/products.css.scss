@@ -1,35 +1,35 @@
 .products-content {
   @extend .row;
+}
 
-  .taxons-container {
-    @include makeColumn(3);
+.taxons-container {
+  @include makeColumn(3);
 
-    .taxons-list {
-      @extend .nav;
-      @extend .nav-list;
-      padding-left: 0;
-      padding-right: 0;
+  .taxons-list {
+    @extend .nav;
+    @extend .nav-list;
+    padding-left: 0;
+    padding-right: 0;
 
-      ul {
-        padding-left: 10px;
-        padding-bottom: 15px;
-      }
+    ul {
+      padding-left: 10px;
+      padding-bottom: 15px;
     }
   }
+}
 
-  .products-container {
-    @include makeColumn(9);
+.products-container {
+  @include makeColumn(9);
 
-    .products-grid {
-      @extend .thumbnails;
-    }
-    .product-item {
-      @include makeColumn(3);
-    }
-    .product {
-      @extend .thumbnail;
-      text-align: center;
-      padding: 15px;
-    }
+  .products-grid {
+    @extend .thumbnails;
+  }
+  .product-item {
+    @include makeColumn(3);
+  }
+  .product {
+    @extend .thumbnail;
+    text-align: center;
+    padding: 15px;
   }
 }

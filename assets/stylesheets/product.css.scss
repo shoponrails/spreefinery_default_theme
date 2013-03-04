@@ -1,6 +1,44 @@
-/*
- *= require jquery.rating
- */
+.product-content {
+  @extend .row;
+}
+
+.product-container {
+  @include makeColumn(9);
+
+  .product-title {
+    margin-bottom: 20px;
+  }
+
+  .product-images {
+    @include makeColumn(4);
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .product-details {
+    @include makeColumn(5);
+
+    div {
+      margin-bottom: 15px;
+    }
+
+    .price {
+      @include makeColumn(5);
+    }
+
+    .options {
+      @include makeColumn(5);
+    }
+
+    .quantity {
+      @include makeColumn(5);
+    }
+
+    .extra {
+      @extend .tabbable;
+    }
+  }
+}
 
 .product_list{
   margin-left: 0;
