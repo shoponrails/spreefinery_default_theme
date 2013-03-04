@@ -1,30 +1,14 @@
 {% content_for head %}
 <script type="text/javascript" src="/assets/product.js"></script>
-<link rel="stylesheet" type="text/css" href="/assets/product.css">
+<link rel="stylesheet" type="text/css" href="/assets/jquery.rating.css">
 {% end_content_for %}
 
+<div class="product-content">
+  <div class="taxons-container">
+    {% include 'spree/taxonomies' %}
+  </div>
 
-<div class="row">
-<div class="span3 product_list">
-
-    <!-- start sidebar -->
-    <ul class="breadcrumb">
-        <li>Categories</li>
-    </ul>
-    <ul class="nav nav-list">
-        {% for taxonomy in get_taxonomies %}
-        <li class="nav-header">
-            <a href="{{ taxonomy.root | seo_url }}">{{taxonomy.name}}</a>
-            {{taxonomy.root | taxons_tree: taxon, 1}}
-        </li>
-        <li class="divider"></li>
-        {% endfor %}
-    </ul>
-
-
-</div>
-
-<div class="span9">
+<div class="product-container">
     <ul class="breadcrumb">
         <li>
             <a href="#">Home</a> <span class="divider">/</span>
@@ -37,142 +21,97 @@
         </li>
     </ul>
 
+    <h2 class="product-title">{{ product.name }}</h2>
 
-    <div class="row">
-        <div class="span9">
-            <h1>{{ product.name }}</h1>
-        </div>
+    <div class="product-images">
+        <a class="zoom" href="{% product_image_url object:product, style:original %}">{% image_for_product style:product %}</a>
+        <ul class="thumbnails">
+
+            <li class="span1">
+                <a class="thumbnail" href="#">
+                    {% image_for_product style:mini %}
+                </a>
+            </li>
+        </ul>
     </div>
-    <hr>
 
-    <div class="row">
-        <div class="span3">
-            <a class="zoom"  href="{% product_image_url object:product, style:original %}">{% image_for_product style:product %}</a>
-            <ul class="thumbnails">
-
-                <li class="span1">
-                    <a class="thumbnail" href="#">
-                        {% image_for_product style:mini %}
-                    </a>
-                </li>
-            </ul>
+    <div class="product-details">
+        {% error_messages_for order %}
+        <div class="price"><h4>Price: {{ product.price_with_currency }}</h4></div>
+        {% form_for 'order' as:post url_helper:populate_orders_path, html:"{ id:'basket', class:'product-cart form-inline'}" %}
+        <div class="options">
+            {% if product.has_variants? %}
+            <ul class="nav nav-list">{% variants_for product %}</ul>
+            {% endif %}
         </div>
-
-        <div class="span6">
-            <div class="span6">
-                <address>
-                    {% for product_property in product_properties %}
-                        <strong>{{ product_property.property.presentation }}:</strong>
-                        <span>{{ product_property.value }}</span>
-                        <br>
-                    {% endfor %}
-                </address>
-            </div>
-            <div class="span6"><h2><strong>Price: {{ product.price_with_currency }}</strong></h2></div>
-            <div class="span6">
-                {% error_messages_for order %}
-                {% form_for 'order' as:post url_helper:populate_orders_path, html:"{ id:'basket', class:'product-cart form-inline'}" %}
+        <div class="quantity">
+            <label>Qty:</label>
+            {% if product.on_sale? %}
                 {% if product.has_variants? %}
-                <div class="span6">
-                    <h2>Available Options</h2>
-                    <ul class="nav nav-list">{% variants_for product %}</ul>
-                </div>
+                    <input type="text" placeholder="1" class="span1" value="1" name="quantity" min="1" max="{{ product.on_hand }}" size="3">
+                {% else %}
+                    <input type="text" placeholder="1" class="span1" value="1" name="variants[{{ product.master.id }}]" min="1" max="{{ product.on_hand }}" size="3">
                 {% endif %}
-                    <div class="span3">
-                        <label>Qty:</label>
-                        {% if product.on_sale? %}
-                                {% if product.has_variants? %}
-                                 <input type="text" placeholder="1" class="span1" value="1" name="quantity" min="1" max="{{ product.on_hand }}" size="3">
-                                {% else %}
-                                    <input type="text" placeholder="1" class="span1" value="1" name="variants[{{ product.master.id }}]" min="1" max="{{ product.on_hand }}" size="3">
-                                {% endif %}
-                            {% else %}
-                                <h3>Out of Stock</h3>
-                        {% endif %}
-                        <button type="submit" class="btn btn-primary">Add to cart</button>
-                    </div>
-                    <div class="span">- OR -</div>
-                    <div class="span2">
-                        <p><a href="#">Add to Wish List</a></p>
-                        <p><a href="compare.html">Add to Compare</a></p>
-                    </div>
-                {% endform_for %}
-            </div>
-            <div class="span6">
-                <p>
-                    <span class="star-rating-control">
-                        <div class="rating-cancel"><a title="Cancel Rating"></a></div>
-                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
-                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
-                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
-                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
-                        <div class="star-rating rater-0 star star-rating-applied star-rating-live"><a title="on">on</a></div>
-                    </span>
-                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
-                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
-                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
-                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">
-                    <input type="radio" class="star star-rating-applied" name="star1" style="display: none;">&nbsp;&nbsp;
-                    <a href="#">0 reviews</a>  |  <a href="#">Write a review</a>
-                </p>
-            </div>
+            {% else %}
+                <strong>Sorry! Out of Stock.</strong>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">Add to cart</button>
         </div>
+        {% endform_for %}
     </div>
-    <hr>
-    <div class="row">
-        <div class="span9">
-            <div class="tabbable">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#1">Description</a></li>
-                    <li><a data-toggle="tab" href="#2">Reviews</a></li>
-                    <li><a data-toggle="tab" href="#3">Related products</a></li>
+    <div class="clearfix" />
+    <div class="extra">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#1">Description</a></li>
+            <li><a data-toggle="tab" href="#2">Specifications</a></li>
+            <li><a data-toggle="tab" href="#3">Related products</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="1" class="tab-pane active">
+                <p>{{ product | product_description }}</p>
+            </div>
+            <div id="2" class="tab-pane">
+              <ul>
+                {% for product_property in product_properties %}
+                <li>
+                    <strong>{{ product_property.property.presentation }}:</strong>
+                    <span>{{ product_property.value }}</span>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div id="3" class="tab-pane">
+                <ul class="thumbnails related_products">
+
+                    <li class="span2">
+                        <div class="thumbnail">
+                            <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
+                            <div class="caption">
+                                <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="span2">
+                        <div class="thumbnail">
+                            <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
+                            <div class="caption">
+                                <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="span2">
+                        <div class="thumbnail">
+                            <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
+                            <div class="caption">
+                                <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
-                <div class="tab-content">
-                    <div id="1" class="tab-pane active">
-                        <p>{{ product | product_description }}</p>
-                    </div>
-                    <div id="2" class="tab-pane">
-                        <p>There are no reviews for this product.</p>
-                    </div>
-                    <div id="3" class="tab-pane">
-                        <ul class="thumbnails related_products">
-
-                            <li class="span2">
-                                <div class="thumbnail">
-                                    <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
-                                    <div class="caption">
-                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="span2">
-                                <div class="thumbnail">
-                                    <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
-                                    <div class="caption">
-                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="span2">
-                                <div class="thumbnail">
-                                    <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
-                                    <div class="caption">
-                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
-
         </div>
     </div>
-
-
-
 </div>
-
 </div>

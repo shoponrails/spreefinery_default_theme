@@ -1,19 +1,15 @@
 {% content_for head %}
-    <link href="/assets/products.css" rel="stylesheet">
     <script src="/assets/products.js" type="text/javascript"></script>
 {% end_content_for %}
-<div class="row">
-    <div class="span3 well">
-        {% include 'spree/jstree_taxonomies' %}
+<div class="products-content">
+    <div class="taxons-container">
+        {% include 'spree/taxonomies' %}
     </div>
-    <div class="span6 product_list">
+    <div class="products-container">
         <ul class="breadcrumb">
             <li><a href="/">Home</a> <span class="divider">/</span></li>
             <li>Products</li>
         </ul>
         {% include 'spree/products' %}
-    </div>
-    <div class="span3">
-        {{content_for_right_sidebar}}
     </div>
 </div>

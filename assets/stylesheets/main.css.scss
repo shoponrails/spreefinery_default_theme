@@ -1,6 +1,4 @@
 /*
- *= require fancybox/jquery.fancybox
- *= require jquery.jgrowl
  * require_tree .
  *= require_self
  */
@@ -11,9 +9,16 @@
 
 @import "wymeditor";
 
+@import "products";
+@import "product";
+
 body {
   padding-top: 90px;
   padding-bottom: 40px;
+}
+
+.main-container {
+  @extend .container;
 }
 
 form#new_refinery_user {
