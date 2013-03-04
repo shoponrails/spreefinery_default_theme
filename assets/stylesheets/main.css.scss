@@ -11,9 +11,15 @@
 
 @import "wymeditor";
 
+@import "products";
+
 body {
   padding-top: 90px;
   padding-bottom: 40px;
+}
+
+.main-container {
+  @extend .container;
 }
 
 form#new_refinery_user {

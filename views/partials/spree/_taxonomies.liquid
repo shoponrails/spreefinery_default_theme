@@ -1,0 +1,8 @@
+<ul class="taxons-list">
+    {% for taxonomy in get_taxonomies %}
+    <li class="nav-header">
+        {{taxonomy.name}}
+    </li>
+  {{taxonomy.root | taxons_tree: taxon, 3}}
+  {% endfor %}
+</ul>
