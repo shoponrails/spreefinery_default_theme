@@ -1,8 +1,8 @@
 <ul class="taxons-list">
-    {% for taxonomy in get_taxonomies %}
+  {% for taxonomy in get_taxonomies %}
     <li class="nav-header">
       <a href="{{ taxonomy.root | seo_url }}">{{taxonomy.name}}</a>
     </li>
-  {{taxonomy.root | taxons_tree: taxon, 3}}
+    {{taxonomy.root | taxons_tree: taxon, 3}}
   {% endfor %}
 </ul>

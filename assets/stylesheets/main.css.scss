@@ -13,7 +13,7 @@
 @import "product";
 
 body {
-  padding-top: 90px;
+  padding-top: 70px;
   padding-bottom: 40px;
 }
 
@@ -49,6 +49,8 @@ form#new_refinery_user {
 
 footer {
   @extend .row;
+
+  padding-top: 50px;
 
   .copy-right {
     @include makeColumn(3);
