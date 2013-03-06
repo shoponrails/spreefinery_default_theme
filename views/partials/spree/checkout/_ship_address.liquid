@@ -1,0 +1,102 @@
+<div id="ship_address_holder" style="display: block">
+    <legend>Your Shipping Address</legend>
+    {% if current_order.ship_address.empty == false %}
+
+    <label for="ship-address-existing">
+      <input name="ship_address" value="ship_address_existing" id="ship-address-existing" checked="checked" type="radio">
+      I want to use an existing address
+    </label>
+
+    <div style="display: block;" id="ship-existing">
+        <select style="width: 100%; margin-bottom: 15px;" size="5">
+            <option selected="selected">
+                {{current_order.ship_address.country.name}}, {{current_order.ship_address.state.name}}, {{current_order.ship_address.city}},
+                {{current_order.ship_address.zipcode}}, {{current_order.ship_address.city}}, {{current_order.ship_address.address1}}
+            </option>
+        </select>
+    </div>
+    <div>
+        <label for="ship_address_new" class="radio">
+          <input name="ship_address" value="ship_new" id="ship_address_new" type="radio">
+          I want to use a new address
+        </label>
+    </div>
+    {% endif %}
+    <div id="ship-address-new" style="{% if current_order.ship_address.empty == false %}display: none;{% else %}display: block;{% endif %}">
+        <div>
+          <label class="checkbox">
+            <input type="checkbox" checked="checked" id="use_billing" value="1" name="order[use_billing]">Ship to billing address
+          </label>
+        </div>
+
+        <table class="form" style="display: none;">
+            <tbody>
+            <tr>
+                <td><span class="required">*</span> First Name:</td>
+                <td><input name="order[ship_address_attributes][firstname]" value="" class="large-field" type="text"></td>
+            </tr>
+            <tr>
+                <td><span class="required">*</span> Last Name:</td>
+                <td><input name="order[ship_address_attributes][lastname]" value="" class="large-field" type="text"></td>
+            </tr>
+            <tr>
+                <td><span class="required">*</span> Phone:</td>
+                <td><input name="order[ship_address_attributes][phone]" value="" class="large-field" type="text"></td>
+            </tr>
+            <tr>
+                <td><span class="required">*</span> Address 1:</td>
+                <td><input name="order[ship_address_attributes][address1]" value="" class="large-field" type="text"></td>
+            </tr>
+            <tr>
+                <td>Address 2:</td>
+                <td><input name="order[ship_address_attributes][address2]" value="" class="large-field" type="text"></td>
+            </tr>
+            <tr>
+                <td><span class="required">*</span> City:</td>
+                <td><input name="order[ship_address_attributes][city]" value="" class="large-field" type="text"></td>
+            </tr>
+            <tr>
+                <td><span class="required">*</span> Post Code:</td>
+                <td><input name="order[ship_address_attributes][zipcode]" value="" class="large-field" type="text"></td>
+            </tr>
+            <tr>
+                <td><span class="required">*</span> Country:</td>
+                <td>
+                    {% collection_select "order[ship_address_attributes]" method:"country_id", collection:available_countries, value_method:'id', text_method:'name', options:"{selected: 214}", html_options:"{id: 'ship_countries_dropdown', class:'countries_dropdown large-field'}" %}
+                </td>
+            </tr>
+            <tr>
+                <td><span class="required">*</span> Region / State:</td>
+                <td>
+                    <select class="states_dropdown" id="ship_address_states_dropdown" name="order[ship_address_attributes][state_id]" class="large-field">
+                        <option value=""> --- First Select Country---</option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+</div>
+<script type="text/javascript">
+    $.ajax({
+        url: "/states/by_country",
+        type: "POST",
+        data: {country_id: $('#ship_countries_dropdown').val(), authenticity_token: authenticity_token },
+        dataType: "json",
+        beforeSend: function (request) {
+            jQuery("#states_spinner").show();
+            $("#ship_address_states_dropdown").hide();
+        },
+        success: function (D) {
+            jQuery("#states_spinner").hide();
+            $("#ship_address_states_dropdown").show();
+            if (D.states != null && D.states.length > 0) {
+                $('#ship_address_states_dropdown').html(D.states);
+
+            } else {
+                $.jGrowl(D.error, { life: 5000 })
+            }
+        }});
+
+</script>

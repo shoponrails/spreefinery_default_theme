@@ -11,7 +11,7 @@
 </ul>
 <h1>Checkout</h1>
 <div class="span8" style="margin-left: 0;">
-  <h3>New Customer</h3>
+  <legend>New Customer</legend>
   <div class="tabbable">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#register" data-toggle="tab">Register Account</a></li>
@@ -49,7 +49,7 @@
   </div>
 </div>
 <div id="login" class="span4">
-  <h3>Returning Customer</h3>
+  <legend>Returning Customer</legend>
   {% error_messages_for refinery_user %}
   {% form_for 'refinery_user' as:post  url_helper:user_session_path, method:post, html:"{ id:'login-form', class:'my-class'}" %}
   <span class="required">*</span> Username:<br>
@@ -58,9 +58,8 @@
   <span class="required">*</span> Password:<br>
   <input name="refinery_user[password]" value="" type="password">
   <br>
-  <a href="/refinery/users/password/new">Forgotten Password</a><br>
-  <br>
-  <a onclick="$('#login-form').submit()" class="button"><span>Login</span></a><br>
+  <input type="submit" value="Login" class="btn btn-primary">
+  <a href="/refinery/users/password/new"> | Forgot Password?</a><br>
   <br>
   {% endform_for %}
 </div>

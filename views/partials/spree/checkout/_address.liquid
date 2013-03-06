@@ -1,0 +1,51 @@
+<div class="span6" style="margin-left: 0;">
+    {% include 'spree/checkout/bill_address' %}
+</div>
+<div class="span6">
+    {% include 'spree/checkout/ship_address' %}
+</div>
+
+<script type="text/javascript">
+    $("input[name='bill_address'], input[name='ship_address']").live('change', function () {
+        if (this.value == 'bill_new') {
+            $('#bill-existing').hide();
+            $('#bill-address-new').show();
+        }
+        if(this.value == 'bill_address_existing') {
+            $('#bill-existing').show();
+            $('#bill-address-new').hide();
+        }
+
+        if (this.value == 'ship_new') {
+            $('#ship-existing').hide();
+            $('#ship-address-new').show();
+        }
+
+        if(this.value == 'ship_address_existing'){
+            $('#ship-existing').show();
+            $('#ship-address-new').hide();
+        }
+    });
+
+    $(".countries_dropdown").change(function (e) {
+        $.ajax({
+            url: "/states/by_country",
+            type: "POST",
+            data: {country_id: $(this).val(), authenticity_token: authenticity_token },
+            dataType: "json",
+            beforeSend: function (request) {
+                jQuery("#states_spinner").show();
+                $("#states_dropdown").hide();
+            },
+            success: function (D) {
+                jQuery("#states_spinner").hide();
+                if (D.states != null && D.states.length > 0) {
+                    if (e.target.id == 'bill_countries_dropdown') $('#bill_address_states_dropdown').html(D.states);
+                    if (e.target.id == 'ship_countries_dropdown') $('#ship_address_states_dropdown').html(D.states);
+
+                } else {
+                    $.jGrowl(D.error, { life: 5000 })
+                }
+            }});
+    });
+</script>

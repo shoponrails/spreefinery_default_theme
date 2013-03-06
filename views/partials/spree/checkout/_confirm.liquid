@@ -1,0 +1,85 @@
+<div class="checkout-product">
+    <div class="columns omega four">
+        <h6>Payment Information</h6>
+        <div class="payment-info">
+            {% if order.credit_cards == empty %}
+                {% if order.payment %}{{ order.payment.payment_method.name }}{% endif %}
+             {% else %}
+                <span class="cc-type">
+                    {% assign cc_type = order.credit_cards.first.cc_type %}
+                  {% unless cc_type == '' %}
+                    <img src="/assets/credit_cards/icons/{{ cc_type }}.png">
+                  {% endunless %}
+                   <h3>Ending in: {{ order.credit_cards.first.last_digits }}</h3>
+                </span>
+                    <br />
+                <span class="full-name">
+                   <h3>Full Name:</h3>
+                  {{ order.credit_cards.first.first_name }}
+                  {{ order.credit_cards.first.last_name }}
+                </span>
+            {% endif %}
+        </div>
+    </div>
+     <br>
+    <table>
+        <thead>
+        <tr>
+            <td class="name">Product Name</td>
+            <td></td>
+            <td class="model">Description</td>
+            <td class="quantity">Quantity</td>
+            <td class="price">Price</td>
+            <td class="total">Total</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in order.line_items %}
+        <tr>
+            <td class="name">
+                <h3>{{ item.variant.product.name }}</h3>
+            </td>
+            <td>
+                {% if item.variant.images.length == 0 %}
+                {% assign product = item.variant.product %}
+                <a href="{{ 'product_path' | url_helper: product }}">
+                    {% image_for_product style:product %}
+                </a>
+                {% else %}
+                <a href="{{ 'product_path' | url_helper: item.variant.product }}">
+                    <img src="{{ item.variant.images.first.small_url }}">
+                </a>
+                {% endif %}
+            </td>
+            <td class="model">{{ item.variant.product | truncated_product_description }}</td>
+            <td class="quantity">{{ item.quantity }}</td>
+            <td class="price">{{ item.variant.display_amount }}</td>
+            <td class="total">{{ item.display_amount }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4" class="price"><b>Sub-Total:</b></td>
+            <td class="total">{{ order.display_item_total }}</td>
+        </tr>
+        {% for adjustment in order.adjustments %}
+             {% unless adjustment.originator_type == 'Spree::TaxRate' and adjustment.amount == 0 %}
+                <tr>
+                    <td colspan="4" class="price"><b>{{ adjustment.label }}</b></td>
+                    <td class="total">{{ adjustment.display_amount }}</td>
+                </tr>
+             {% endunless %}
+        {% endfor %}
+        <tr>
+            <td colspan="4" class="price"><b>Total:</b></td>
+            <td class="total">{{ order.display_total }}</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="payment">
+    <div class="buttons">
+        <div class="right"><a id="next" class="button"><span>Confirm Order</span></a></div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+{% content_for head %}
+    <script src="/assets/checkout.js" type="text/javascript"></script>
+{% end_content_for %}
+
+<h1>Checkout</h1>
+<div class="checkout">
+  {% capture error_messages_for %}{% error_messages_for order %}{% endcapture %}
+    {% if error_messages_for.size != 0 %}<div class="warning">{{error_messages_for}}</div>{% endif %}
+    {{ checkout_progress }}
+
+    {% form_for order as:post url_helper:update_checkout_path, url_helper_params:order.state, method:put, html:"{ id:'checkout-form', class:'checkout-form'}" %}
+
+    {% if order.state == 'address'  %}
+    <div class="checkout-content" style="display: block">{% include 'spree/checkout/address' %}</div>
+    {% endif %}
+
+    {% if order.state == 'delivery'  %}
+    <div class="checkout-content" style="display: block">{% include 'spree/checkout/delivery' %}</div>
+    {% endif %}
+
+    {% if order.state == 'payment' %}
+    <div class="checkout-content" style="display: block">{% include 'spree/checkout/payment' %}</div>
+    {% endif %}
+
+    {% if order.state == 'confirm' %}
+    <div class="checkout-content" style="display: block">{% include 'spree/checkout/confirm' %}</div>
+    {% endif %}
+
+    <div class="clearfix"></div>
+    <div style="padding-top: 20px;">
+      <input type="submit" value="Continue" class="btn btn-primary">
+    </div>
+
+    {% endform_for %}
+</div>

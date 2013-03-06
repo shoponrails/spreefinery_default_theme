@@ -1,0 +1,96 @@
+<legend>Your Billing Address</legend>
+{% if current_order.bill_address.empty == false %}
+    <label for="bill-address-existing" class="radio">
+      <input name="bill_address" value="bill_address_existing" id="bill-address-existing" checked="checked" type="radio">
+      I want to use an existing address
+    </label>
+
+    <div style="display: block;" id="bill-existing">
+        <select style="width: 100%; margin-bottom: 15px;" size="5">
+            <option selected="selected">
+                {{current_order.bill_address.country.name}}, {{current_order.bill_address.state.name}}, {{current_order.bill_address.city}},
+                {{current_order.bill_address.zipcode}}, {{current_order.bill_address.city}}, {{current_order.bill_address.address1}}
+            </option>
+        </select>
+    </div>
+    <p>
+
+        <label for="bill_address_new" class="radio">
+          <input name="bill_address" value="bill_new" id="bill_address_new" type="radio">
+          I want to use a new address
+        </label>
+</p>
+{% endif %}
+
+<div id="bill-address-new" style="{% if current_order.bill_address.empty == false %}display: none;{% else %}display: block;{% endif %}" >
+    <table class="form">
+        <tbody>
+        <tr>
+            <td><span class="required">*</span> First Name:</td>
+            <td><input name="order[bill_address_attributes][firstname]" value="" class="large-field" type="text"></td>
+        </tr>
+        <tr>
+            <td><span class="required">*</span> Last Name:</td>
+            <td><input name="order[bill_address_attributes][lastname]" value="" class="large-field" type="text"></td>
+        </tr>
+        <tr>
+            <td><span class="required">*</span> Phone:</td>
+            <td><input name="order[bill_address_attributes][phone]" value="" class="large-field" type="text"></td>
+        </tr>
+
+        <tr>
+            <td><span class="required">*</span> Address 1:</td>
+            <td><input name="order[bill_address_attributes][address1]" value="" class="large-field" type="text"></td>
+        </tr>
+        <tr>
+            <td>Address 2:</td>
+            <td><input name="order[bill_address_attributes][address2]" value="" class="large-field" type="text"></td>
+        </tr>
+        <tr>
+            <td><span class="required">*</span> City:</td>
+            <td><input name="order[bill_address_attributes][city]" value="" class="large-field" type="text"></td>
+        </tr>
+        <tr>
+            <td><span class="required">*</span> Post Code:</td>
+            <td><input name="order[bill_address_attributes][zipcode]" value="" class="large-field" type="text"></td>
+        </tr>
+        <tr>
+            <td><span class="required">*</span> Country:</td>
+            <td>
+                {% collection_select "order[bill_address_attributes]" method:"country_id", collection:available_countries, value_method:'id', text_method:'name', options:"{selected: 214}", html_options:"{id: 'bill_countries_dropdown', class:'countries_dropdown large-field'}" %}
+            </td>
+        </tr>
+        <tr>
+            <td><span class="required">*</span> Region / State:</td>
+            <td>
+                <select class="states_dropdown" id="bill_address_states_dropdown" name="order[bill_address_attributes][state_id]" class="large-field">
+                    <option value=""> --- First Select Country---</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $.ajax({
+        url: "/states/by_country",
+        type: "POST",
+        data: {country_id: $('#bill_countries_dropdown').val(), authenticity_token: authenticity_token },
+        dataType: "json",
+        beforeSend: function (request) {
+            jQuery("#states_spinner").show();
+            $("#bill_address_states_dropdown").hide();
+        },
+        success: function (D) {
+            jQuery("#states_spinner").hide();
+            $("#bill_address_states_dropdown").show();
+            if (D.states != null && D.states.length > 0) {
+                $('#bill_address_states_dropdown').html(D.states);
+
+            } else {
+                $.jGrowl(D.error, { life: 5000 })
+            }
+        }});
+
+</script>

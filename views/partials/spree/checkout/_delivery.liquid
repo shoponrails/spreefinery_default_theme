@@ -1,0 +1,19 @@
+<input name="state" value="payment" type="hidden">
+
+<p>Please select the preferred shipping method to use on this order.</p>
+<table class="form">
+    <tbody>
+    {% for rate in order.rate_hash %}
+    <tr>
+        <td colspan="3"><b>{{ rate.name }}</b></td>
+    </tr>
+    <tr>
+        <td style="width: 1px;">
+            <input name="order[shipping_method_id]" value="{{ rate.id }}" id="{{ rate.id }}" checked="checked" type="radio">
+        </td>
+        <td><label for="{{ rate.id }}">{{ rate.name }}</label></td>
+        <td style="text-align: right;"><label for="{{ rate.id }}">{{ rate.display_price }}</label></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
