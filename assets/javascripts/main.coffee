@@ -6,7 +6,5 @@
 #= require fancybox/jquery.fancybox
 #= require jstree/jquery.jstree
 #= require ./taxonomies_manager
+#= require ./distal
 #= require_self
-
-
-$ ->
