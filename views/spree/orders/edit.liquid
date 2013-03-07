@@ -52,24 +52,24 @@
                 </tbody>
             </table>
         </div>
+        <div>
+          <label>
+            Coupon Code:
+            <input type="text" name="order[coupon_code]" id="order_coupon_code" />
+          </label>
+          <input type="submit" value="Apply Coupon" class="btn" />
+        </div>
         {% endform_for %}
 
-        <div class="cart-total">
-            <table>
-                <tbody>
-                <tr>
-                    <td colspan="5"></td>
-                    <td class="right"><b>Sub-Total:</b></td>
-                    <td class="right">{{ order.display_item_total }}</td>
-                </tr>
-                <tr>
-                    <td colspan="5"></td>
-                    <td class="right"><b>Total:</b></td>
-                    <td class="right">{{order.display_total}}</td>
-                </tr>
-                </tbody>
-            </table>
+        <div><strong>Sub-Total:</strong>{{ order.display_item_total }}</div>
+        <div>
+          {% for adjustment in order.adjustments %}
+          <strong>{{ adjustment.label }}</strong>
+          <span>{{ adjustment.display_amount }}</span>
+          {% endfor %}
         </div>
+        <div><strong>Total:</strong>{{ order.display_total }}</div>
+
         <div class="buttons">
             <div class="left"><a id="submit_busket_form" class="button"><span>Update</span></a></div>
             <div class="right">
