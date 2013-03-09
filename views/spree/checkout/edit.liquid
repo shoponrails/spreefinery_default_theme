@@ -28,7 +28,11 @@
 
     <div class="clearfix"></div>
     <div style="padding-top: 20px;">
-      <input type="submit" value="Continue" class="btn btn-primary">
+      {% if order.state == 'confirm' %}
+      <button type="submit" class="btn btn-primary">Place Order</button>
+      {% else %}
+      <button type="submit" class="btn btn-primary">Continue</button>
+      {% endif %}
     </div>
 
     {% endform_for %}
