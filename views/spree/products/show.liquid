@@ -1,6 +1,5 @@
 {% content_for head %}
 <script type="text/javascript" src="/assets/product.js"></script>
-<link rel="stylesheet" type="text/css" href="/assets/jquery.rating.css">
 {% end_content_for %}
 
 <div class="product-content">
@@ -8,20 +7,18 @@
     {% include 'spree/taxonomies' %}
   </div>
 
-<div class="product-container">
-  {{ taxon | breadcrumbs: " / " }}
-    <ul class="breadcrumb">
-        <li>
-            <a href="#">Home</a> <span class="divider">/</span>
-        </li>
-        <li>
-            <a href="#">Audio</a> <span class="divider">/</span>
-        </li>
-        <li class="active">
-            <a href="#">MP3 players</a>
+  <div class="product-container">
+    <ul id="taxon-breadcrumbs" class="breadcrumb">
+        <li data-qrepeat="crumb breadcrumbs">
+            <a data-qtext="crumb.label" data-qattr="href crumb.link" href="#"></a> <span class="divider">/</span>
         </li>
     </ul>
-
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var breads = {{ taxon | breadcrumbs_json }};
+        $('#taxon-breadcrumbs').distal(breads);
+      });
+    </script>
     <h2 class="product-title">{{ product.name }}</h2>
 
     <div class="product-images">
