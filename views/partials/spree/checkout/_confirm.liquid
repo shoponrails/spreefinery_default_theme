@@ -14,6 +14,9 @@
     <img src="/assets/credit_cards/icons/{{ cc_type }}.png">
     {% endunless %} xxxx-xxxx-xxxx-{{ order.credit_cards.last.last_digits }}
   </dd>
+  <dt>Expiration</dt>
+  <dd>{{ order.credit_cards.first.month }} / {{ order.credit_cards.first.year }}</dd>
+  <br />
   <dt>Name</dt>
   <dd>{{ order.credit_cards.first.first_name }} {{ order.credit_cards.first.last_name }}</dd>
   <dt>Billing Address</dt>
@@ -46,6 +49,6 @@
       {{current_order.ship_address.country.name}}
     </dd>
     <dt>Handling Method</dt>
-    <dt>{{current_order.shipping_method.name}}</dt>
+    <dd>{{current_order.shipping_method.name}}</dd>
   </dl>
 </div>

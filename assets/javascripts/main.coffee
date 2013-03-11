@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.cookie
+#= require ./jquery.browser
 #= require bootstrap/bootstrap.min
 #= require fancybox/jquery.fancybox.pack
 #= require jquery.jgrowl_minimized
