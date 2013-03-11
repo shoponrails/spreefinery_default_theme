@@ -6,7 +6,56 @@
 </div>
 
 <script type="text/javascript">
-    $("input[name='bill_address'], input[name='ship_address']").live('change', function () {
+    $("#checkout-form").validate({
+        submitHandler: function(form) {
+            console.log(form)
+        },
+        rules: {
+            agree: "required",
+            'order[bill_address_attributes][firstname]': {
+                required: true,
+                minlength: 3
+            },
+            'order[bill_address_attributes][lastname]': {
+                required: true,
+                minlength: 3
+            },
+            'order[bill_address_attributes][phone]': {
+                required: true,
+                number: true
+            },
+            'order[bill_address_attributes][address1]': {
+                required: true,
+                minlength: 3
+            },
+            'order[bill_address_attributes][city]': {
+                required: true,
+                minlength: 3
+            },
+            'order[bill_address_attributes][zip]': {
+                required: true,
+                number: true
+            },
+            'order[bill_address_attributes][country_id]': {
+                required: true
+            },
+            'order[bill_address_attributes][state_id]': {
+                required: true
+            }
+        },
+        messages: {
+            'order[bill_address_attributes][firstname]': {
+                required: "This field is required!",
+                minlength: "Please enter at least 3 characters!"
+            },
+            'order[bill_address_attributes][state_id]': {
+                required: "Please select region/state!"
+            }
+        }
+    });
+
+
+    $("input[name='bill_address'], input[name='ship_address']").on('change', function () {
         if (this.value == 'bill_new') {
             $('#bill-existing').hide();
             $('#bill-address-new').show();

@@ -1,5 +1,5 @@
 <legend>Your Billing Address</legend>
-{% if current_order.bill_address.empty == false %}
+{% if current_order.bill_address.new_record == false %}
     <label for="bill-address-existing" class="radio">
       <input name="bill_address" value="bill_address_existing" id="bill-address-existing" checked="checked" type="radio">
       I want to use an existing address
@@ -14,16 +14,15 @@
         </select>
     </div>
     <p>
-
         <label for="bill_address_new" class="radio">
           <input name="bill_address" value="bill_new" id="bill_address_new" type="radio">
           I want to use a new address
         </label>
-</p>
+    </p>
 {% endif %}
 
-<div id="bill-address-new" style="{% if current_order.bill_address.empty == false %}display: none;{% else %}display: block;{% endif %}" >
-    <table class="form">
+<div id="bill-address-new" style="{% if current_order.bill_address.new_record == false %}display: none;{% else %}display: block;{% endif %}" >
+    <table>
         <tbody>
         <tr>
             <td><span class="required">*</span> First Name:</td>

@@ -1,4 +1,4 @@
-/*! fancyBox v2.1.3 fancyapps.com | fancyapps.com/fancybox/#license */
+/*! fancyBox v2.1.4 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-wrap,
 .fancybox-skin,
 .fancybox-outer,
@@ -76,7 +76,7 @@
 }
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-	background-image: url('/assets/fancybox/fancybox_sprite.png');
+	background-image: url('fancybox_sprite.png');
 }
 
 #fancybox-loading {
@@ -175,7 +175,7 @@
 	overflow: hidden;
 	display: none;
 	z-index: 8010;
-	background: url('/assets/fancybox/fancybox_overlay.png');
+	background: url('fancybox_overlay.png');
 }
 
 .fancybox-overlay-fixed {

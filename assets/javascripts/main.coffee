@@ -1,9 +1,9 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.cookie
-#= require jquery.equalheights
 #= require bootstrap/bootstrap.min
-#= require fancybox/jquery.fancybox
+#= require fancybox/jquery.fancybox.pack
+#= require jquery.jgrowl_minimized
 #= require jstree/jquery.jstree
 #= require ./taxonomies_manager
 #= require ./distal
