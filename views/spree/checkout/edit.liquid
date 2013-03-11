@@ -6,7 +6,18 @@
 <div class="checkout">
   {% capture error_messages_for %}{% error_messages_for order %}{% endcapture %}
     {% if error_messages_for.size != 0 %}<div class="warning">{{error_messages_for}}</div>{% endif %}
-    {{ checkout_progress }}
+
+    <ul id="checkout_steps" class="nav nav-pills">
+      <li data-qrepeat="crumb progress" data-qattr="class crumb.state" class="">
+        <a data-qtext="crumb.label" data-qattr="href crumb.link" href="#"></a>
+      </li>
+    </ul>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var steps = {{ checkout_progress_json }};
+      $('#checkout_steps').distal(steps);
+      });
+    </script>
 
     {% form_for order as:post url_helper:update_checkout_path, url_helper_params:order.state, method:put, html:"{ id:'checkout-form', class:'checkout-form'}" %}
 
