@@ -3,82 +3,68 @@
 <link rel="stylesheet" type="text/css" href="/assets/cart.css">
 {% end_content_for %}
 
-<ul class="breadcrumb">
-  <li><a href="/">Home</a><span class="divider">/</span></li>
-  <li><a href="{{ update_cart | url_helper }}">Shopping Cart</a></li>
-</ul>
-<div class="row">
-    <div class="span12">
-        <h1>Shopping Cart</h1>
-        {% error_messages_for order %}
-        {% form_for order as:post  url_helper:update_cart_path, method:put, html:"{ id:'basket', class:'my-class'}" %}
-        <div class="cart-info">
-            <table class="table">
-                <thead>
-                <tr>
-                    <td class="remove">Remove</td>
-                    <td class="image">Image</td>
-                    <td class="name">Product Name</td>
-                    <td class="quantity">Quantity</td>
-                    <td class="price">Unit Price</td>
-                    <td class="total">Total</td>
-                </tr>
-                </thead>
-                <tbody>
-                {% for line_item in order.line_items %}
-                <tr>
-                    <td class="remove"><input value="{{ forloop.index0 }}" type="checkbox"></td>
-                    <td class="image">
-                        <a href="{{ 'product_path' | url_helper: line_item.variant.product }}">
-                            <img src="{{line_item.variant.product.small_image_url}}" alt="{{line_item.variant.product.name}}" title="{{line_item.variant.product.name}}">
-                        </a>
-                    </td>
-                    <td class="name">
-                        <a href="{{ 'product_path' | url_helper: line_item.variant.product }}">{{line_item.variant.product.name}}</a>
-                        <div>{{ line_item.variant | line_item_description }}</div>
-                        <div>{{ line_item.variant.options_text }}</div>
-                    </td>
-                    <td class="quantity">
-                        <input type="hidden" value="{{line_item.id}}" name="order[line_items_attributes][{{forloop.index0}}][id]"
-                               id="order_line_items_attributes_{{ forloop.index0 }}_id">
-                        <input type="text" value="{{line_item.quantity}}" size="3" name="order[line_items_attributes][{{ forloop.index0 }}][quantity]"
-                               min="0" id="order_line_items_attributes_{{ forloop.index0 }}_quantity" class="line_item_quantity">
-                    </td>
-                    <td class="price">{{ line_item.single_money }}</td>
-                    <td class="total">{{ line_item.display_amount }}</td>
-                </tr>
-                {% endfor %}
+<h1>Shopping Cart</h1>
+{% error_messages_for order %}
+{% form_for order as:post  url_helper:update_cart_path, method:put, html:"{ id:'basket' }" %}
+<div class="cart-info">
+    <table class="table">
+        <thead>
+        <tr>
+            <td class="image"></td>
+            <td class="name">Product Name</td>
+            <td class="quantity">Quantity</td>
+            <td class="price">Unit Price</td>
+            <td class="total">Total</td>
+            <td class="remove">Remove</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for line_item in order.line_items %}
+        <tr>
+            <td class="image">
+                <a href="{{ 'product_path' | url_helper: line_item.variant.product }}">
+                    <img src="{{line_item.variant.product.small_image_url}}" alt="{{line_item.variant.product.name}}" title="{{line_item.variant.product.name}}">
+                </a>
+            </td>
+            <td class="name">
+                <a href="{{ 'product_path' | url_helper: line_item.variant.product }}">{{line_item.variant.product.name}}</a>
+                <div>{{ line_item.variant | line_item_description }}</div>
+                <div>{{ line_item.variant.options_text }}</div>
+            </td>
+            <td class="quantity">
+                <input type="hidden" value="{{line_item.id}}" name="order[line_items_attributes][{{forloop.index0}}][id]"
+                       id="order_line_items_attributes_{{ forloop.index0 }}_id">
+                <input type="text" value="{{line_item.quantity}}" size="3" name="order[line_items_attributes][{{ forloop.index0 }}][quantity]"
+                       min="0" id="order_line_items_attributes_{{ forloop.index0 }}_quantity" class="line_item_quantity">
+            </td>
+            <td class="price">{{ line_item.single_money }}</td>
+            <td class="total">{{ line_item.display_amount }}</td>
+            <td class="remove"><input value="{{ forloop.index0 }}" type="checkbox"></td>
+        </tr>
+        {% endfor %}
 
-                </tbody>
-            </table>
-        </div>
-        <div>
-          <label>
-            Coupon Code:
-            <input type="text" name="order[coupon_code]" id="order_coupon_code" />
-          </label>
-          <input type="submit" value="Apply Coupon" class="btn" />
-        </div>
-        {% endform_for %}
-
-        <div><strong>Sub-Total:</strong>{{ order.display_item_total }}</div>
-        <div>
-          {% for adjustment in order.adjustments %}
-          <strong>{{ adjustment.label }}</strong>
-          <span>{{ adjustment.display_amount }}</span>
-          {% endfor %}
-        </div>
-        <div><strong>Total:</strong>{{ order.display_total }}</div>
-
-        <div class="buttons">
-            <div class="left"><a id="submit_busket_form" class="button"><span>Update</span></a></div>
-            <div class="right">
-                <a href="/checkout" class="button"><span>Checkout</span></a>
-            </div>
-            <div class="center">
-                <a href="/products" class="button"><span>Continue Shopping</span></a>
-            </div>
-        </div>
-
-    </div>
+        </tbody>
+    </table>
 </div>
+<div class="row">
+    <div class="input-append span9" style="margin-top: 15px;">
+        <input type="text" name="order[coupon_code]" id="order_coupon_code" placeholder="Coupon Code" class="span2" />
+        <button type="submit" class="btn">Apply</button>
+    </div>
+
+    <div class="span3" style="text-align: right;">
+      <dl class="dl-horizontal">
+        <dt>Sub-Total</dt>
+        <dd>{{ order.display_item_total }}</dd>
+        {% for adjustment in order.adjustments %}
+          <dt>{{ adjustment.label }}</dt>
+          <dd>{{ adjustment.display_amount }}</dd>
+        {% endfor %}
+        <dt>Total</dt>
+        <dd>{{ order.display_total }}</dd>
+      </dl>
+      <a href="/checkout" class="btn btn-primary"><span>Checkout</span></a>
+    </div>
+  {% endform_for %}
+</div>
+
