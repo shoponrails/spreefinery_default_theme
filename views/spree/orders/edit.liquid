@@ -3,11 +3,11 @@
 <link rel="stylesheet" type="text/css" href="/assets/cart.css">
 {% end_content_for %}
 
+<ul class="breadcrumb">
+  <li><a href="/">Home</a><span class="divider">/</span></li>
+  <li><a href="{{ update_cart | url_helper }}">Shopping Cart</a></li>
+</ul>
 <div class="row">
-    <ul class="breadcrumb">
-        <li><a href="/">Home</a><span class="divider">/</span></li>
-        <li><a href="{{ update_cart | url_helper }}">Shopping Cart</a></li>
-    </ul>
     <div class="span12">
         <h1>Shopping Cart</h1>
         {% error_messages_for order %}
