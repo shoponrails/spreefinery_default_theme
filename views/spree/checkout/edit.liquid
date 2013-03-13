@@ -35,7 +35,7 @@
     </script>
     {% endif %}
 
-    {% form_for order as:post url_helper:update_checkout_path, url_helper_params:order.state, method:put, html:"{ id:'checkout-form', class:'checkout-form'}" %}
+    {% form_for order as:post url_helper:update_checkout_path, url_helper_params:order.state, method:put, html:"{ id:'checkout-form', class:'checkout-form form-horizontal'}" %}
 
     {% if order.state == 'address'  %}
     <div class="checkout-content" style="display: block">{% include 'spree/checkout/address' %}</div>
