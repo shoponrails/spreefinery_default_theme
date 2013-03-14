@@ -14,6 +14,7 @@ $(document).ready(function() {
                 if (data.states != null && data.states.length > 0) {
                     $("#bill_address_states_dropdown").show();
                     $('#bill_address_states_dropdown').distal(data);
+                    $("#bill_address_states_dropdown").val($("#bill_address_states_dropdown").attr('value'));
 
                 } else {
                     $("#bill_address_states_input").show();
@@ -33,7 +34,7 @@ $(document).ready(function() {
                 if (data.states != null && data.states.length > 0) {
                     $("#ship_address_states_dropdown").show();
                     $('#ship_address_states_dropdown').distal(data);
-
+                    $("#ship_address_states_dropdown").val($("#ship_address_states_dropdown").attr('value'));
                 } else {
                     $("#ship_address_states_input").show();
                 }
@@ -41,17 +42,18 @@ $(document).ready(function() {
         });
     }
 
-    updateBillStates();
-    updateShipStates();
+    if ($("#bill_countries_dropdown").is('*')) {
+        updateBillStates();
+        updateShipStates();
 
-    $("#bill_countries_dropdown").change(updateBillStates);
-    $("#ship_countries_dropdown").change(updateShipStates);
+        $("#bill_countries_dropdown").change(updateBillStates);
+        $("#ship_countries_dropdown").change(updateShipStates);
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Toggling use billing address for shipping
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var updateShipFormVisible = function() {
-        console.log("update ship form visible")
         if ($('#use_billing').is(':checked'))
             $('#ship_address_form').hide();
         else
@@ -60,30 +62,6 @@ $(document).ready(function() {
 
     updateShipFormVisible();
     $('#use_billing').click(updateShipFormVisible);
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Toggling use new/existing address
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $("input[name='bill_address'], input[name='ship_address']").on('change', function () {
-        if (this.value == 'bill_new') {
-            $('#bill-existing').hide();
-            $('#bill-address-new').show();
-        }
-        if(this.value == 'bill_address_existing') {
-            $('#bill-existing').show();
-            $('#bill-address-new').hide();
-        }
-
-        if (this.value == 'ship_new') {
-            $('#ship-existing').hide();
-            $('#ship-address-new').show();
-        }
-
-        if(this.value == 'ship_address_existing'){
-            $('#ship-existing').show();
-            $('#ship-address-new').hide();
-        }
-    });
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Form validation
