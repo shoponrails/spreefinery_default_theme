@@ -1,6 +1,8 @@
+{% if flash_error.size == 0 %}
 <div class="alert alert-info">
   <strong>Almost there...</strong> Please review the following information, and click "Place Order".
 </div>
+{% endif %}
 <!--<div class="alert alert-error">-->
   <!--<strong>Oh no...</strong> There was a problem processing your payment. Please verify the information below.-->
 <!--</div>-->
@@ -17,15 +19,13 @@
   <dt>Expiration</dt>
   <dd>{{ order.credit_cards.first.month }} / {{ order.credit_cards.first.year }}</dd>
   <br />
-  <dt>Name</dt>
-  <dd>{{ order.credit_cards.first.first_name }} {{ order.credit_cards.first.last_name }}</dd>
   <dt>Billing Address</dt>
   <dd>
     {{current_order.bill_address.address1}}, {{current_order.bill_address.address1}}<br>
     {{current_order.bill_address.city}}, {{current_order.bill_address.state.name}} {{current_order.bill_address.zipcode}}<br>
     {{current_order.bill_address.country.name}}
   </dd>
-  <br />
+  <br>
   <dt><b>Sub-Total</b></dt>
     <dd>{{ order.display_item_total }}</dd>
 {% for adjustment in order.adjustments %}
@@ -44,10 +44,12 @@
   <dl class="dl-horizontal">
     <dt>Shipment Address</dt>
     <dd>
+      {{ order.ship_address.firstname }} {{ order.ship_address.lastname }}<br>
       {{current_order.ship_address.address1}}, {{current_order.ship_address.address1}}<br>
       {{current_order.ship_address.city}}, {{current_order.ship_address.state.name}} {{current_order.ship_address.zipcode}}<br>
       {{current_order.ship_address.country.name}}
     </dd>
+    <br>
     <dt>Handling Method</dt>
     <dd>{{current_order.shipping_method.name}}</dd>
   </dl>
