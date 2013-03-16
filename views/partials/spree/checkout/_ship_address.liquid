@@ -63,6 +63,6 @@
 <div class="control-group">
   <label class="control-label" for="use_billing">Ship to Billing Address</label>
   <div class="controls">
-    <input type="checkbox" id="use_billing" value="1" name="order[use_billing]" {% if (current_order.bill_address.empty? && current_order.ship_address.empty?) || current_order.bill_address.same_as?(current_order.ship_address) == true %}checked{% endif %}>
+    <input type="checkbox" id="use_billing" value="1" name="order[use_billing]" {% if current_order.same_as_ship_address %}checked{% endif %}>
   </div>
 </div>

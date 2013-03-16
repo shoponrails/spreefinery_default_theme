@@ -16,6 +16,14 @@
       });
     </script>
 
+    {% capture flash_error %}{% flash key:error %}{% endcapture %}
+    {% if flash_error.size != 0 %}
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ flash_error }}
+    </div>
+    {% endif %}
+
     {% capture error_messages_for %}{% error_messages_for order %}{% endcapture %}
     {% if error_messages_for.size != 0 %}
     <div class="alert alert-error">
