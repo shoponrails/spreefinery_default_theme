@@ -1,4 +1,4 @@
-{% capture_variable products %}{% get_products per_page:4 %}{% endcapture_variable %}
+{% capture_variable products %}{% get_products per_page:6 %}{% endcapture_variable %}
 <ul class="products-grid">
     {% for product in products %}
     <li class="product-item">
@@ -12,3 +12,4 @@
     </li>
     {% endfor %}
 </ul>
+{% paginator collection:products %}
