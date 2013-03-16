@@ -6,7 +6,7 @@
         <ul id="posts">
             {% for post in posts %}
             <li>
-                <h2><a href="{{ post | url_for: 'blog_post_path'  }}">{{ post.title }}</a></h2>
+                <h2><a href="{{ 'blog_post_path' | url_helper: post  }}">{{ post.title }}</a></h2>
                 <p>{{ post.body }}</p>
             </li>
             {% endfor %}
@@ -16,3 +16,5 @@
         {{content_for_right_sidebar}}
     </div>
 </div>
+
+{% paginator collection:posts %}
