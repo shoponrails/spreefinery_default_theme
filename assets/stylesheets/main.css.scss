@@ -1,14 +1,16 @@
 /*
- * require_tree .
- *= require variables
- *= require bootstrap
- *= require bootswatch
- *= require wymeditor
- *= require products
- *= require product
- *= require checkout
  *= require_self
 */
+
+@import "variables";
+@import "bootstrap";
+@import "bootswatch";
+
+@import "wymeditor";
+
+@import "products";
+@import "product";
+@import "checkout";
 
 body {
   padding-top: 70px;
