@@ -10,7 +10,9 @@
             <a class="brand" href="/">{{site_name}}</a>
             <div class="nav-collapse collapse">
                 {% bootstrap_pages_menu %}
-                {% include 'login_form' %}
+                <form action="{{ 'products_path' | url_helper }}" class="navbar-form pull-right">
+                  <input name="keywords" type="text" class="search-query" placeholder="Product Search">
+                </form>
             </div><!--/.nav-collapse -->
         </div>
     </div>
