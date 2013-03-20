@@ -4,8 +4,9 @@
 //= require jquery.validate.min
 //= require jquery.browser
 
-//= require fancybox/jquery.fancybox.pack
-//= require bootstrap/bootstrap.min
+//= require bootstrap
 //= require distal
+
+//= require fancybox/jquery.fancybox.pack
 
 //= require_self

@@ -2,12 +2,12 @@
 <script type="text/javascript" src="/assets/product.js"></script>
 {% end_content_for %}
 
-<div class="product-content">
-  <div class="taxons-container">
+<div id="product-content" class="row">
+  <div class="span3">
     {% include 'spree/taxonomies' %}
   </div>
 
-  <div class="product-container">
+  <div class="span9">
     <ul id="taxon-breadcrumbs" class="breadcrumb">
         <li data-qrepeat="crumb breadcrumbs">
             <a data-qtext="crumb.label" data-qattr="href crumb.link" href="#"></a> <span class="divider">/</span>
@@ -19,9 +19,9 @@
         $('#taxon-breadcrumbs').distal(breads);
       });
     </script>
-    <h2 class="product-title">{{ product.name }}</h2>
 
-    <div class="product-images">
+    <div class="row">
+    <div class="product-images span4">
         <a class="zoom" href="{% product_image_url object:product, style:original %}">{% image_for_product style:product %}</a>
         <ul class="thumbnails">
 
@@ -33,16 +33,17 @@
         </ul>
     </div>
 
-    <div class="product-details">
+    <div class="product-details span5">
+        <h2 class="product-title">{{ product.name }}</h2>
         {% error_messages_for order %}
-        <div class="price"><h4>Price: {{ product.price_with_currency }}</h4></div>
+        <div><strong>{{ product.price_with_currency }}</strong></div>
         {% form_for 'order' as:post url_helper:populate_orders_path, html:"{ id:'basket', class:'product-cart form-inline'}" %}
-        <div class="options">
+        <div>
             {% if product.has_variants? %}
             <ul class="nav nav-list">{% variants_for product %}</ul>
             {% endif %}
         </div>
-        <div class="quantity">
+        <div>
             <label>Qty:</label>
             {% if product.on_sale? %}
                 {% if product.has_variants? %}
@@ -57,8 +58,9 @@
         </div>
         {% endform_for %}
     </div>
-    <div class="clearfix" />
-    <div class="extra">
+    </div>
+
+    <div class="tabbable">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#1">Description</a></li>
             <li><a data-toggle="tab" href="#2">Specifications</a></li>

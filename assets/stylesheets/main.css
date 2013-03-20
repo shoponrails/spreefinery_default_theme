@@ -1,0 +1,18 @@
+/*
+ *= require 'bootstrap'
+ *= require 'wymeditor'
+
+ *= require 'products'
+ *= require 'product'
+
+ *= require_self
+*/
+
+body {
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+
+footer {
+    margin-top: 50px;
+}

@@ -1,0 +1,15 @@
+.product-title {
+    margin-bottom: 20px;
+}
+
+.product-images {
+    text-align: center;
+}
+
+.product-details * div {
+    margin-bottom: 15px;
+}
+
+.product_list ul {
+  list-style: none outside none;
+}

@@ -35,7 +35,7 @@
                 <input type="hidden" value="{{line_item.id}}" name="order[line_items_attributes][{{forloop.index0}}][id]"
                        id="order_line_items_attributes_{{ forloop.index0 }}_id">
                 <input type="text" value="{{line_item.quantity}}" size="3" name="order[line_items_attributes][{{ forloop.index0 }}][quantity]"
-                       min="0" id="order_line_items_attributes_{{ forloop.index0 }}_quantity" class="line_item_quantity">
+                       min="0" id="order_line_items_attributes_{{ forloop.index0 }}_quantity" class="line_item_quantity input-mini">
             </td>
             <td class="price">{{ line_item.single_money }}</td>
             <td class="total">{{ line_item.display_amount }}</td>

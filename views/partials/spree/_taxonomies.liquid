@@ -1,4 +1,4 @@
-<ul class="taxons-list">
+<ul class="taxons-list nav nav-list">
   {% for taxonomy in get_taxonomies %}
     <li class="nav-header">
       <a href="{{ taxonomy.root | seo_url }}">{{taxonomy.name}}</a>
