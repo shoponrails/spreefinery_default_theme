@@ -9,4 +9,6 @@
 
 //= require fancybox/jquery.fancybox.pack
 
+//= require checkout
+
 //= require_self
