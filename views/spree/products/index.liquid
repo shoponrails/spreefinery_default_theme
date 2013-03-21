@@ -1,11 +1,15 @@
+{% content_for head %}
+<link href="/themes/assets/stylesheets/products.css" rel="stylesheet">
+{% end_content_for %}
+
 <div id="products-content" class="row">
     <div class="span3">
         {% include 'spree/taxonomies' %}
     </div>
     <div class="span9">
         <ul class="breadcrumb">
-            <li><a href="/">Home</a> <span class="divider">/</span></li>
-            <li>Products</li>
+            <li><a href="/">{{ 'paginator.home' | t }}</a> <span class="divider">/</span></li>
+            <li>{{ 'paginator.products' | t }}</li>
         </ul>
         {% include 'spree/products' %}
     </div>

@@ -1,25 +1,23 @@
 {% content_for head %}
-<script type="text/javascript" src="/assets/product.js"></script>
+<script type="text/javascript" src="/themes/assets/javascripts/product.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var breads = {{ taxon | breadcrumbs_json }};
+    $('#taxon-breadcrumbs').distal(breads);
+    });
+</script>
 {% end_content_for %}
 
 <div id="product-content" class="row">
   <div class="span3">
     {% include 'spree/taxonomies' %}
   </div>
-
   <div class="span9">
     <ul id="taxon-breadcrumbs" class="breadcrumb">
         <li data-qrepeat="crumb breadcrumbs">
             <a data-qtext="crumb.label" data-qattr="href crumb.link" href="#"></a> <span class="divider">/</span>
         </li>
     </ul>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        var breads = {{ taxon | breadcrumbs_json }};
-        $('#taxon-breadcrumbs').distal(breads);
-      });
-    </script>
-
     <div class="row">
     <div class="product-images span4">
         <a class="zoom" href="{% product_image_url object:product, style:original %}">{% image_for_product style:product %}</a>
@@ -52,9 +50,9 @@
                     <input type="text" placeholder="1" class="span1" value="1" name="variants[{{ product.master.id }}]" min="1" max="{{ product.on_hand }}" size="3">
                 {% endif %}
             {% else %}
-                <strong>Sorry! Out of Stock.</strong>
+                <strong>{{ 'product_page.out_of_stock' | t }}</strong>
             {% endif %}
-            <button type="submit" class="btn btn-primary">Add to cart</button>
+            <button type="submit" class="btn btn-primary">{{ 'product_page.add_to_cart' | t }}</button>
         </div>
         {% endform_for %}
     </div>
@@ -63,8 +61,8 @@
     <div class="tabbable">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#1">Description</a></li>
-            <li><a data-toggle="tab" href="#2">Specifications</a></li>
-            <li><a data-toggle="tab" href="#3">Related products</a></li>
+            <li><a data-toggle="tab" href="#2">{{ 'product_page.specifications' | t }}</a></li>
+            <li><a data-toggle="tab" href="#3">{{ 'product_page.related_products' | t }}</a></li>
         </ul>
         <div class="tab-content">
             <div id="1" class="tab-pane active">
@@ -82,10 +80,17 @@
             </div>
             <div id="3" class="tab-pane">
                 <ul class="thumbnails related_products">
-
                     <li class="span2">
                         <div class="thumbnail">
-                            <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
+                            <a href="product.html"><img src="/themes/assets/images/220x180.gif" alt=""></a>
+                            <div class="caption">
+                                <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="span2">
+                        <div class="thumbnail">
+                            <a href="product.html"><img src="/themes/assets/images/220x180.gif" alt=""></a>
                             <div class="caption">
                                 <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
                             </div>
@@ -94,16 +99,7 @@
 
                     <li class="span2">
                         <div class="thumbnail">
-                            <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
-                            <div class="caption">
-                                <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="span2">
-                        <div class="thumbnail">
-                            <a href="product.html"><img src="/assets/220x180.gif" alt=""></a>
+                            <a href="product.html"><img src="/themes/assets/images/220x180.gif" alt=""></a>
                             <div class="caption">
                                 <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
                             </div>

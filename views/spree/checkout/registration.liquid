@@ -1,54 +1,58 @@
-<h1>Checkout</h1>
+{% content_for head %}
+<script src="/themes/assets/javascripts/checkout.js" type="text/javascript"></script>
+{% end_content_for %}
+
+<h1>{{ 'checkout_page.checkout' | t }}</h1>
 <div class="span8" style="margin-left: 0;">
-  <legend>New Customer</legend>
+  <legend>{{ 'checkout_page.new_customer' | t }}</legend>
   <div class="tabbable">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#register" data-toggle="tab">Register Account</a></li>
-      <li><a href="#guest" data-toggle="tab">Guest Checkout</a></li>
+      <li class="active"><a href="#register" data-toggle="tab">{{ 'checkout_page.register_account' | t }}</a></li>
+      <li><a href="#guest" data-toggle="tab">{{ 'checkout_page.guest_checkout' | t }}</a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="register">
         {% error_messages_for user %}
         {% form_for user as:post url_helper:checkout_sign_up_path, method:put %}
-        <span class="required">*</span> Username:<br>
+        <span class="required">*</span>{{ 'checkout_page.username' | t }}:<br>
         <input type="text" class="small-field" value="" name="user[username]">
         <br/>
-        <span class="required">*</span> Email:<br>
+        <span class="required">*</span>{{ 'checkout_page.email' | t }}:<br>
         <input type="text" class="small-field" value="" name="user[email]">
         <br/>
-        <span class="required">*</span> Password:<br>
+        <span class="required">*</span>{{ 'checkout_page.password' | t }}:<br>
         <input type="password" class="small-field" value="" name="user[password]">
         <br/>
-        <span class="required">*</span> Password Confirm: <br>
+        <span class="required">*</span>{{ 'checkout_page.password_confirm' | t }}: <br>
         <input type="password" class="small-field" value="" name="user[password_confirmation]">
         <br/>
-        <input type="submit" value="Continue" class="btn btn-primary">
+        <input type="submit" value="{{ 'continue' | t }}" class="btn btn-primary">
         {% endform_for %}
       </div>
       <div class="tab-pane" id="guest">
         {% error_messages_for order %}
         {% form_for order as:post url_helper:update_checkout_registration_path, method:put %}
-        <span class="required">*</span> Your Email:<br>
-        <input type="text" size="30" name="order[email]" id="order_email" class="title">
-        <br />
-        <input type="submit" value="Continue" class="btn btn-primary">
+            <span class="required">*</span>{{ 'checkout_page.your_email' | t }}:<br>
+            <input type="text" size="30" name="order[email]" id="order_email" class="title">
+            <br />
+            <input type="submit" value="{{ 'continue' | t }}" class="btn btn-primary">
         {% endform_for %}
       </div>
     </div>
   </div>
 </div>
 <div id="login" class="span4">
-  <legend>Returning Customer</legend>
+  <legend>{{ 'checkout_page.returning_customer' | t }}</legend>
   {% error_messages_for refinery_user %}
   {% form_for 'refinery_user' as:post  url_helper:user_session_path, method:post, html:"{ id:'login-form', class:'my-class'}" %}
-  <span class="required">*</span> Username:<br>
+  <span class="required">*</span>{{ 'checkout_page.username' | t }}:<br>
   <input name="refinery_user[login]" value="" type="text">
   <br>
-  <span class="required">*</span> Password:<br>
+  <span class="required">*</span>{{ 'checkout_page.password' | t }}:<br>
   <input name="refinery_user[password]" value="" type="password">
   <br>
   <input type="submit" value="Login" class="btn btn-primary">
-  <a href="/refinery/users/password/new"> | Forgot Password?</a><br>
+  <a href="/refinery/users/password/new"> | {{ 'checkout_page.forgot_password' | t }}</a><br>
   <br>
   {% endform_for %}
 </div>

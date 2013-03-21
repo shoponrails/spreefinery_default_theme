@@ -11,7 +11,7 @@
             <div class="nav-collapse collapse">
                 {% bootstrap_pages_menu %}
                 <form action="{{ 'products_path' | url_helper }}" class="navbar-form pull-right">
-                  <input name="keywords" type="text" class="search-query input" placeholder="Product Search">
+                  <input name="keywords" type="text" class="search-query input" placeholder="{{ 'nav_bar.product_search' | t }}">
                 </form>
             </div><!--/.nav-collapse -->
         </div>

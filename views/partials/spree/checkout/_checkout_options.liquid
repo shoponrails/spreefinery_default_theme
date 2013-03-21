@@ -1,32 +1,32 @@
 <div class="left">
-    <h2>New Customer</h2>
+    <h2>{{ 'checkout_page.new_customer' | t }}</h2>
     <label for="registration">
         <input id="registration" value="signup" name="select_variant" checked="checked" type="radio"
                onclick="$('#order_email_field').hide(); $('#new-account-holder').show()">
-        <b>Register Account</b>
+        <b>{{ 'checkout_page.register_account' | t }}</b>
     </label>
     <div id="new-account-holder">
         {% error_messages_for user %}
         {% form_for user as:post  url_helper:checkout_sign_up_path, method:put, html:"{ id:'signup-form', class:'checkout-signup-form'}" %}
         <div class="checkout-content" style="display: block">
             <div class="left">
-                <h2>Your Personal Details</h2>
-                <span class="required">*</span> Username:<br>
+                <h2>{{ 'checkout_page.your_personal_details' | t }}</h2>
+                <span class="required">*</span> {{ 'checkout_page.username' | t }}:<br>
                 <input type="text" class="small-field" value="" name="user[username]">
                 <br>
                 <br>
-                <span class="required">*</span> E-Mail:<br>
+                <span class="required">*</span> {{ 'checkout_page.email' | t }}:<br>
                 <input type="text" class="small-field" value="" name="user[email]">
                 <br>
                 <br>
             </div>
             <div class="right">
-                <h2>Your Password</h2>
-                <span class="required">*</span> Password:<br>
+                <h2>{{ 'checkout_page.your_password' | t }}</h2>
+                <span class="required">*</span> {{ 'checkout_page.password' | t }}:<br>
                 <input type="password" class="small-field" value="" name="user[password]">
                 <br>
                 <br>
-                <span class="required">*</span> Password Confirm: <br>
+                <span class="required">*</span> {{ 'checkout_page.password_confirm' | t }}: <br>
                 <input type="password" class="small-field" value="" name="user[password_confirmation]">
                 <br>
                 <br>
@@ -37,13 +37,13 @@
     <br>
     <label for="guest">
         <input id="guest" type="radio" value="guest" name="select_variant" onclick="$('#order_email_field').show(); $('#new-account-holder').hide()">
-        <b>Guest Checkout</b>
+        <b>{{ 'checkout_page.guest_checkout' | t }}</b>
     </label>
     <div id="order_email_field" style="display: none">
         {% error_messages_for order %}
         {% form_for order as:post  url_helper:update_checkout_registration_path, method:put, html:"{ id:'guest-form', class:'checkout-guest-form'}" %}
         <br>
-        <label for="order_email">Your Email</label><br>
+        <label for="order_email">{{ 'checkout_page.your_email' | t }}</label><br>
         <input type="text" size="30" name="order[email]" id="order_email" class="title">
         {% endform_for %}
     </div>
@@ -51,25 +51,25 @@
     <br>
     <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of
         the orders you have previously made.</p>
-    <a onclick=" $('#'+$('input[name=select_variant]:checked').val()+'-form').submit() " class="button"><span>Continue</span></a><br>
+    <a onclick=" $('#'+$('input[name=select_variant]:checked').val()+'-form').submit() " class="button"><span>{{ 'continue' | t }}</span></a><br>
     <br>
 
 </div>
 <div id="login" class="right">
-    <h2>Returning Customer</h2>
-    <p>I am a returning customer</p>
+    <h2>{{ 'checkout_page.returning_customer' | t }}</h2>
+    <p>{{ 'checkout_page.iam_returning_customer' | t }}</p>
     {% error_messages_for refinery_user %}
     {% form_for 'refinery_user' as:post  url_helper:user_session_path, method:post, html:"{ id:'login-form', class:'my-class'}" %}
-    <b>E-Mail or Login:</b><br>
-    <input name="refinery_user[login]" value="" type="text">
-    <br>
-    <br>
-    <b>Password:</b><br>
-    <input name="refinery_user[password]" value="" type="password">
-    <br>
-    <a href="/refinery/users/password/new">Forgotten Password</a><br>
-    <br>
-    <a onclick="$('#login-form').submit()" class="button"><span>Login</span></a><br>
-    <br>
+        <b>{{ 'checkout_page.email_or_login' | t }}:</b><br>
+        <input name="refinery_user[login]" value="" type="text">
+        <br>
+        <br>
+        <b>{{ 'checkout_page.password' | t }}:</b><br>
+        <input name="refinery_user[password]" type="password">
+        <br>
+        <a href="/refinery/users/password/new">{{ 'checkout_page.forgotten_password' | t }}:</a><br>
+        <br>
+        <a onclick="$('#login-form').submit()" class="button"><span>{{ 'login' | t }}</span></a><br>
+        <br>
     {% endform_for %}
 </div>

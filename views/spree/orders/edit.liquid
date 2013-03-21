@@ -1,9 +1,9 @@
 {% content_for head %}
-<script src="/assets/cart.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="/assets/cart.css">
+<script src="/themes/assets/javascripts/cart.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/themes/assets/stylesheets/cart.css">
 {% end_content_for %}
 
-<h1>Shopping Cart</h1>
+<h1>{{ 'cart_page.shopping_cart' | t }}</h1>
 {% error_messages_for order %}
 {% form_for order as:post  url_helper:update_cart_path, method:put, html:"{ id:'basket' }" %}
 <div class="cart-info">
@@ -11,11 +11,11 @@
         <thead>
         <tr>
             <td class="image"></td>
-            <td class="name">Product Name</td>
-            <td class="quantity">Quantity</td>
-            <td class="price">Unit Price</td>
-            <td class="total">Total</td>
-            <td class="remove">Remove</td>
+            <td class="name">{{ 'cart_page.product_name' | t }}</td>
+            <td class="quantity">{{ 'cart_page.quantity' | t }}</td>
+            <td class="price">{{ 'cart_page.unit_price' | t }}</td>
+            <td class="total">{{ 'cart_page.total' | t }}</td>
+            <td class="remove">{{ 'cart_page.remove' | t }}</td>
         </tr>
         </thead>
         <tbody>
@@ -42,28 +42,27 @@
             <td class="remove"><input value="{{ forloop.index0 }}" type="checkbox"></td>
         </tr>
         {% endfor %}
-
         </tbody>
     </table>
 </div>
 <div class="row">
     <div class="input-append span9" style="margin-top: 15px;">
         <input type="text" name="order[coupon_code]" id="order_coupon_code" placeholder="Coupon Code" class="span2" />
-        <button type="submit" class="btn">Apply</button>
+        <button type="submit" class="btn">{{ 'cart_page.apply' | t }}</button>
     </div>
 
     <div class="span3" style="text-align: right;">
       <dl class="dl-horizontal">
-        <dt>Sub-Total</dt>
+        <dt>{{ 'cart_page.sub_total' | t }}</dt>
         <dd>{{ order.display_item_total }}</dd>
         {% for adjustment in order.adjustments %}
           <dt>{{ adjustment.label }}</dt>
           <dd>{{ adjustment.display_amount }}</dd>
         {% endfor %}
-        <dt>Total</dt>
+        <dt>{{ 'cart_page.total' | t }}</dt>
         <dd>{{ order.display_total }}</dd>
       </dl>
-      <a href="/checkout" class="btn btn-primary"><span>Checkout</span></a>
+      <a href="/checkout" class="btn btn-primary"><span>{{ 'cart_page.checkout' | t }}</span></a>
     </div>
   {% endform_for %}
 </div>

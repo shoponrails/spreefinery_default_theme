@@ -3,7 +3,7 @@
         <input type="hidden" value="✓" name="utf8">
         <input type="hidden" value="{{form_authenticity_token}}" name="authenticity_token">
     </div>
-    <input class="input-small" type="text" name="refinery_user[login]" id="refinery_user_login" placeholder="Login Or Email">
-    <input class="input-small" type="password" name="refinery_user[password]" id="refinery_user_password" placeholder="Password" autocomplete="off">
-    <button type="submit" class="btn">Sign In</button>
+    <input class="input-small" type="text" name="refinery_user[login]" id="refinery_user_login" placeholder="{{ 'login_form.login_or_email' | t }}">
+    <input class="input-small" type="password" name="refinery_user[password]" id="refinery_user_password" placeholder="{{ 'login_form.password' | t }}" autocomplete="off">
+    <button type="submit" class="btn">{{ 'login_form.sign_in' | t }}</button>
 </form>

@@ -1,6 +1,6 @@
 <input name="state" value="payment" type="hidden">
 
-<p>Please select the preferred shipping method to use on this order.</p>
+<p>{{ 'delivery_page.select_shipping_method' | t }}</p>
 <table class="form">
     <tbody>
     {% for rate in order.rate_hash %}

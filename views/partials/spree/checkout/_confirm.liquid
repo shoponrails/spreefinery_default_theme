@@ -1,32 +1,32 @@
 {% if flash_error.size == 0 %}
 <div class="alert alert-info">
-  <strong>Almost there...</strong> Please review the following information, and click "Place Order".
+  <strong>{{ 'checkout_page.almost' | t }}</strong> {{ 'checkout_page.please_review' | t }}.
 </div>
 {% endif %}
 <!--<div class="alert alert-error">-->
   <!--<strong>Oh no...</strong> There was a problem processing your payment. Please verify the information below.-->
 <!--</div>-->
 <div class="span6" style="margin-left: 0;">
-<legend>Payment Information</legend>
+<legend>{{ 'checkout_page.payment_information' | t }}</legend>
 <dl class="dl-horizontal">
-  <dt>Credit Card</dt>
+  <dt>{{ 'checkout_page.credit_card' | t }}</dt>
   <dd>
     {% assign cc_type = order.credit_cards.last.cc_type %}
     {% unless cc_type == '' %}
-    <img src="/assets/credit_cards/icons/{{ cc_type }}.png">
+    <img src="/themes/assets/images/credit_cards/icons/{{ cc_type }}.png">
     {% endunless %} xxxx-xxxx-xxxx-{{ order.credit_cards.last.last_digits }}
   </dd>
-  <dt>Expiration</dt>
+  <dt>{{ 'checkout_page.expiration' | t }}</dt>
   <dd>{{ order.credit_cards.first.month }} / {{ order.credit_cards.first.year }}</dd>
   <br />
-  <dt>Billing Address</dt>
+  <dt>{{ 'checkout_page.billing_address' | t }}</dt>
   <dd>
     {{current_order.bill_address.address1}}, {{current_order.bill_address.address1}}<br>
     {{current_order.bill_address.city}}, {{current_order.bill_address.state.name}} {{current_order.bill_address.zipcode}}<br>
     {{current_order.bill_address.country.name}}
   </dd>
   <br>
-  <dt><b>Sub-Total</b></dt>
+  <dt><b>{{ 'checkout_page.sub_total' | t }}</b></dt>
     <dd>{{ order.display_item_total }}</dd>
 {% for adjustment in order.adjustments %}
     {% unless adjustment.originator_type == 'Spree::TaxRate' and adjustment.amount == 0 %}
@@ -34,15 +34,15 @@
         <dd>{{ adjustment.display_amount }}</dd>
     {% endunless %}
 {% endfor %}
-<dt><b>Total</b></dt>
+<dt><b>{{ 'checkout_page.total' | t }}</b></dt>
 <dd>{{ order.display_total }}</dd>
 </dl>
 </div>
 
 <div class="span6">
-  <legend>Delivery Information</legend>
+  <legend>{{ 'checkout_page.delivery_information' | t }}</legend>
   <dl class="dl-horizontal">
-    <dt>Shipment Address</dt>
+    <dt>{{ 'checkout_page.shipment_address' | t }}</dt>
     <dd>
       {{ order.ship_address.firstname }} {{ order.ship_address.lastname }}<br>
       {{current_order.ship_address.address1}}, {{current_order.ship_address.address1}}<br>
@@ -50,7 +50,7 @@
       {{current_order.ship_address.country.name}}
     </dd>
     <br>
-    <dt>Handling Method</dt>
+    <dt>{{ 'checkout_page.handling_method' | t }}</dt>
     <dd>{{current_order.shipping_method.name}}</dd>
   </dl>
 </div>

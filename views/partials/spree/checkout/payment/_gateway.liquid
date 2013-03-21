@@ -1,18 +1,18 @@
 
-<img alt="Credit_card" id="credit-card-image" src="/assets/credit_cards/credit_card.gif">
+<img alt="Credit_card" id="credit-card-image" src="/themes/assets/images/credit_cards/credit_card.gif">
 
 <p class="field" data-hook="card_number">
-    <label for="card_number"><span class="required">*</span> Card Number</label>
+    <label for="card_number"><span class="required">*</span> {{ 'checkout_page.card_number' | t }}</label>
     <input autocomplete="off" class="required" id="card_number" maxlength="19" name="payment_source[{{payment_method.id}}][number]" size="19" value="" type="text">
     &nbsp;
   <span id="card_type" style="display:none;">
-    ( <span id="looks_like">Card type is <span id="type"></span></span>
-      <span id="unrecognized">Unrecognized card type</span>
+    ( <span id="looks_like">{{ 'checkout_page.card_type' | t }} <span id="type"></span></span>
+      <span id="unrecognized">{{ 'checkout_page.unrecognized_card_type' | t }}</span>
     )
   </span>
 </p>
 <p class="field" data-hook="card_expiration">
-    <label for="card_month"><span class="required">*</span> Expiration</label>
+    <label for="card_month"><span class="required">*</span> {{ 'checkout_page.expiration' | t }}</label>
     <select class="required input-small" id="card_month" name="payment_source[{{payment_method.id}}][month]">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -49,9 +49,9 @@
 
 </p>
 <p class="field" data-hook="card_code">
-    <label for="card_code"><span class="required">*</span> Card Code</label>
+    <label for="card_code"><span class="required">*</span> {{ 'checkout_page.card_code' | t }}</label>
     <input class="required" id="card_code" name="payment_source[{{payment_method.id}}][verification_value]" size="5" value="" type="text">
-    <a href="/content/cvv?locale=en" data-hook="cvv_link" id="cvv_link" target="_blank">(What's This?)</a>
+    <a href="/content/cvv?locale=en" data-hook="cvv_link" id="cvv_link" target="_blank">({{ 'checkout_page.what_is_this' | t }})</a>
 </p>
 <input id="payment_source_{{payment_method.id}}_first_name" name="payment_source[{{payment_method.id}}][first_name]" value="{{order.billing_firstname}}" type="hidden">
 <input id="payment_source_{{payment_method.id}}_last_name" name="payment_source[{{payment_method.id}}][last_name]" value="{{order.billing_lastname}}" type="hidden">
