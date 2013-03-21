@@ -1,6 +1,6 @@
 config:
-  name: "Default Assets Pipeline"
-  key: "default_sprockets"
+  name: "Sprockets"
+  key: "sprockets"
   description: "The Default Theme based on Twitter Bootstrap and Rails Assets Pipeline"
   url: "https://github.com/greendog"
   author: "Alexander Negoda"
