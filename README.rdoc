@@ -1,0 +1,5 @@
+== Default Theme with support Rails Assets Pipeline
+
+ 1. git clone git://github.com/shoponrails/spreefinery_default_theme.git sprockets
+ 2. cd ./sprockets 
+ 3. git checkout -b sprockets origin/sprockets
