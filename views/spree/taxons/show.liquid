@@ -1,13 +1,19 @@
 {% content_for head %}
 <link href="/themes/assets/stylesheets/products.css" rel="stylesheet">
+<script type="text/javascript" src="/themes/assets/javascripts/product.js"></script>
 {% end_content_for %}
 
 <div id="products-content" class="row">
     <div class="span3">
         {% include 'spree/taxonomies' %}
     </div>
-    <div class="span9">
+    <div class="span{% if taxon.children_empty %}6{% else %}9{% endif %}">
         {% include 'spree/breadcrumbs' %}
         {% include 'spree/products' %}
     </div>
+    {% if taxon.children_empty %}
+    <div class="span3">
+        {%  include 'spree/filters' %}
+    </div>
+    {% endif %}
 </div>

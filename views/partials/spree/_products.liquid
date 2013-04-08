@@ -1,4 +1,7 @@
-{% capture_variable products %}{% get_products per_page:6 %}{% endcapture_variable %}
+{% unless products %}
+  {% capture_variable products %}{% get_products per_page:6 %}{% endcapture_variable %}
+{% endunless %}
+
 <ul class="thumbnails">
     {% for product in products %}
     <li class="span3">
