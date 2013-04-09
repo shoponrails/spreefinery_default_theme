@@ -6,3 +6,8 @@ body {
 footer {
     margin-top: 50px;
 }
+
+ul.list-sidebar {
+    list-style-type: none;
+    margin-left: 0;
+}

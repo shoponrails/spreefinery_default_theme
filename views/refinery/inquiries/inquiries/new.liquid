@@ -1,0 +1,36 @@
+<div id="home-content" class="row">
+    <div class="span3">
+        <form method="post" id="new_inquiry" class="new_inquiry" action="/contact" accept-charset="UTF-8"><div style="margin:0;padding:0;display:inline"><input type="hidden" value="✓" name="utf8"><input type="hidden" value="b9wVCrrYP1AOTqM8QckBt2wuNEf9N3zj+5TGoCr9SUA=" name="authenticity_token"></div>
+
+            <div class="field">
+                <label for="inquiry_name" class="placeholder-fallback">Name *</label>
+                <input type="text" size="30" required="required" placeholder="Name" name="inquiry[name]" id="inquiry_name" class="text">
+            </div>
+            <div class="field">
+                <label for="inquiry_email" class="placeholder-fallback">Email *</label>
+                <input type="email" size="30" required="required" placeholder="Email" name="inquiry[email]" id="inquiry_email" class="text email">
+            </div>
+
+            <div class="field">
+                <label for="inquiry_phone" class="placeholder-fallback">Phone</label>
+                <input type="text" size="30" placeholder="Phone" name="inquiry[phone]" id="inquiry_phone" class="text phone">
+            </div>
+
+            <div class="field message_field">
+                <label for="inquiry_message" class="placeholder-fallback">Message *</label>
+                <textarea rows="8" required="required" placeholder="Message" name="inquiry[message]" id="inquiry_message" cols="40"></textarea>
+            </div>
+            <div class="actions">
+                <input type="submit" value="Send message" name="commit">
+                <a id="privacy_link" href="/pages/privacy-policy">We value your privacy</a>
+            </div>
+        </form>
+        {{content_for_left_sidebar}}
+    </div>
+    <div class="span6">
+        {{content_for_body}}
+    </div>
+    <div class="span3">
+        {{content_for_right_sidebar}}
+    </div>
+</div>
