@@ -5,7 +5,7 @@
         {% for recent_post in recent %}
         <tr>
             <td>
-                <i class="icon-flag "></i>&nbsp; <a id="r1" href="{% url_helper blog_post_path, recent_post %}">{{ recent_post.title }}</a>
+                <i class="icon-flag "></i>&nbsp;<a href="{% url_helper blog_post_path, recent_post %}">{{ recent_post.title }}</a>
             </td>
         </tr>
         {% endfor %}

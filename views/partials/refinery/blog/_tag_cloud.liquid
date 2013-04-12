@@ -1,9 +1,6 @@
-<div class="well-small">
-    <h3>Tag Cloud</h3>
+<div id="tag_cloud" class="tab-pane fade in active" style="text-align: center;">
     {% capture_variable tag_cloud %}{% blog_tag_cloud %}{% endcapture_variable %}
     {% for tag in tag_cloud %}
-    <span class="label label-info"><i class="icon-tag icon-white"></i>
-        <a href="{{ tag.url }}" class="{{ tag.css_class }}">&nbsp;{{ tag.name }}</a>
-    </span>
+    <a href="{{ tag.url }}" class="{{ tag.css_class }} label label-info">&nbsp;{{ tag.name }}</a>
     {% endfor %}
 </div>

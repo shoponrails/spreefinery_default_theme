@@ -1,49 +1,20 @@
-<ul class="nav nav-pills" id="tab-navigator">
-    <li class="active"><a data-toggle="tab" href="#popular">Popular</a></li>
-    <li><a data-toggle="tab" href="#archive">Archive</a></li>
-    <li><a data-toggle="tab" href="#recent">Recent</a></li>
+<ul class="nav nav-pills">
+    <li class="active"><a data-toggle="tab" href="#popular"><i class="icon-star"></i>&nbsp;Popular</a></li>
+    <li><a data-toggle="tab" href="#recent"><i class="icon-flag"></i>&nbsp;Recent</a></li>
+    <li><a data-toggle="tab" href="#categories"><i class="icon-check"></i>&nbsp;Categories</a></li>
 </ul>
 
 <div class="tab-content well-small">
-    <div id="popular" class="tab-pane fade in active">
-        <table class="table table-striped table-bordered">
-            <tbody>
-            <tr>
-                <td>
-                    <i class="icon-star "></i>&nbsp; <a id="p1" href="#">df dfree dfff dsf dfail
-                    Acco dfd)</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <i class="icon-star"></i>&nbsp;<a id="p2" href="#">dsf sdfFree dsf sdfil
-                    Account(s)</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <i class="icon-star"></i>&nbsp;<a id="p3" href="#">sdf Free Esdfmail Accousdf)
-                    dfdfd</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <i class="icon-star"></i>&nbsp; <a id="p4" href="#">sdf Free Eds fail Ac dfd
-                    fdf)</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <i class="icon-star"></i>&nbsp; <a id="p5" href="#">dfee Ef dsf il df(s dfd
-                    f)</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    {% include 'refinery/blog/archive_tab' %}
+    {% include 'refinery/blog/popular_posts' %}
     {% include 'refinery/blog/recent_posts' %}
+    {% include 'refinery/blog/categories' %}
 </div>
 
-{% include 'refinery/blog/tag_cloud' %}
-{% include 'refinery/blog/categories' %}
+<ul class="nav nav-pills">
+    <li class="active"><a data-toggle="tab" href="#tag_cloud"><i class="icon-tags"></i>&nbsp;Tag Cloud</a></li>
+    <li><a data-toggle="tab" href="#archive"><i class="icon-calendar"></i>&nbsp;Archive</a></li>
+</ul>
+<div class="tab-content well-small">
+    {% include 'refinery/blog/tag_cloud' %}
+    {% include 'refinery/blog/archive_tab' %}
+</div>

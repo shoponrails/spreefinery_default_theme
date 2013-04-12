@@ -1,0 +1,46 @@
+<ancor id="comments"></ancor>
+<div class="row">
+    <div class="span8">
+        <ul class="breadcrumb">
+            <li>Your comment</li>
+        </ul>
+        <form class="form-inline well" method="post" action="/blog/{{ post.slug }}/comments" accept-charset="UTF-8">
+            <div style="margin:0;padding:0;display:inline">
+                <input type="hidden" value="✓" name="utf8">
+                <input type="hidden" value="{{form_authenticity_token}}" name="authenticity_token">
+            </div>
+
+            <div class="controls controls-row well-small">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    <input type="text" class="" name="comment[name]" id="comment_name" placeholder="Name">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input type="email" class="" name="comment[email]" id="comment_email" placeholder="Email address">
+                </div>
+            </div>
+            <div class="controls well-small">
+                <textarea class="span7" rows="5" name="comment[message]" placeholder="Your Message" id="comment_message"></textarea>
+            </div>
+
+            <div class="controls well-large">
+                <button id="contact-submit" type="submit" class="btn btn-primary input-medium pull-right">Send comment</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span7">
+        <ul class="breadcrumb">
+            <li>Comments ({{ post.approved_comments.size }})</li>
+        </ul>
+        {% for comment in post.approved_comments %}
+        <blockquote>
+            <p>{{ comment.message }}</p>
+            <small>{{ comment.name }}  {{ comment.created_at | time_ago_in_words }}</small>
+        </blockquote>
+        {% endfor %}
+    </div>
+</div>

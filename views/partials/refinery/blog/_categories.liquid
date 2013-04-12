@@ -1,8 +1,13 @@
-<div class="well-small">
-    <h3>Categories</h3>
-    <ul class="nav nav-pills nav-stacked">
+<div id="categories" class="tab-pane fade in ">
+    <table class="table table-striped table-bordered">
+        <tbody>
         {% for category in categories %}
-        <li><a href="{% url_helper blog_category_path, category %}"><i class="icon-check"></i>&nbsp{{ category.title }}({{ category.post_count }})</a></li>
+        <tr>
+            <td>
+                <a href="{% url_helper blog_category_path, category %}"><i class="icon-check"></i>&nbsp;{{ category.title }}({{ category.post_count }})</a>
+            </td>
+        </tr>
         {% endfor %}
-    </ul>
+        </tbody>
+    </table>
 </div>
