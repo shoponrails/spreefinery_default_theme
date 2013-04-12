@@ -1,3 +1,5 @@
-== Default Theme with support Twitter Bootstrap
+== The Default Theme with support The Twitter Bootstrap
 
  cd Rails.root && git clone git://github.com/shoponrails/spreefinery_default_theme.git themes/default
+
+ Tools for creating themes based on The Twitter Bootstrap: http://bootsnipp.com/resources

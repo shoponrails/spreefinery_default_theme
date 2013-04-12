@@ -22,12 +22,12 @@
         {% for line_item in order.line_items %}
         <tr>
             <td class="image">
-                <a href="{{ 'product_path' | url_helper: line_item.variant.product }}">
+                <a href="{% url_helper product_path, line_item.variant.product %}">
                     <img src="{{line_item.variant.product.small_image_url}}" alt="{{line_item.variant.product.name}}" title="{{line_item.variant.product.name}}">
                 </a>
             </td>
             <td class="name">
-                <a href="{{ 'product_path' | url_helper: line_item.variant.product }}">{{line_item.variant.product.name}}</a>
+                <a href="{% url_helper product_path, line_item.variant.product %}">{{line_item.variant.product.name}}</a>
                 <div>{{ line_item.variant | line_item_description }}</div>
                 <div>{{ line_item.variant.options_text }}</div>
             </td>

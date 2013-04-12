@@ -1,78 +1,51 @@
 <div class="row">
-    <div class="span3">
-        <h3>Search</h3>
-        <div class="control-group">
-            <div class="controls">
-                <div class="input-append">
-                    <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn btn-success" type="button">Go!</button>
-                </div>
-            </div>
-        </div>
-        <h3>Recent Post</h3>
-        <ul class="list-sidebar">
-            <li><i class="icon-pencil"></i> <a href="single.html">Post#1</a></li>
-            <li><i class="icon-pencil"></i> <a href="#">Post#2</a></li>
-            <li><i class="icon-pencil"></i> <a href="#">Post#3</a></li>
-        </ul>
-        <h3>Recent Comments</h3>
-        <ul class="list-sidebar">
-            <li><i class="icon-comment"></i> Admin on <a href="#">Post#1</a></li>
-            <li><i class="icon-comment"></i> <a href="#">John Doe</a> on <a href="#">Post#2</a></li>
-            <li><i class="icon-comment"></i> Admin on <a href="#">Post#3</a></li>
-        </ul>
-        <h3>Archives</h3>
-        <ul class="list-sidebar">
-            <li><i class="icon-file"></i> <a href="#">July 2012</a></li>
-            <li><i class="icon-file"></i> <a href="#">April 2012</a></li>
-            <li><i class="icon-file"></i> <a href="#">March 2012</a></li>
-            <li><i class="icon-file"></i> <a href="#">February 2012</a></li>
-            <li><i class="icon-file"></i> <a href="#">January 2012</a></li>
-            <li><i class="icon-file"></i> <a href="#">December 2011</a></li>
-        </ul>
-        <h3>Categories</h3>
-        <ul class="list-sidebar">
-            <li><i class="icon-list-alt"></i> <a href="#">Nature</a></li>
-            <li><i class="icon-list-alt"></i> <a href="#">Photography</a></li>
-            <li><i class="icon-list-alt"></i> <a href="#">Design</a></li>
-            <li><i class="icon-list-alt"></i> <a href="#">Un Categories</a></li>
-        </ul>
-        <h3>Tags</h3>
-        <p class="post-tags"><a href="#"><span class="label label-success">Green</span></a> <a href="#"><span class="label label-success">plant</span></a>
-            <a href="#"><span class="label label-success">growth</span></a> <a href="#"><span class="label label-success">property</span></a>
-            <a href="#"><span class="label label-success">kitchen</span></a> <a href="#"><span class="label label-success">indoor</span></a>
-            <a href="#"></a><a href="#"><span class="label label-success">Beach</span></a> <a href="#"><span class="label label-success">landscape</span></a>
-        </p>
-
+    <div class="span4">
+        {% include 'refinery/blog/sidebar' %}
     </div>
-    <div class="span9">
+    <div class="span8">
         {% if posts.size > 0 %}
-        <ul id="posts">
+        <ul class="thumbnails">
             {% for post in posts %}
-            <h1><a href="{{ 'blog_post_path' | url_helper: post  }}">{{ post.title }}</a></h1>
-            <p>{{ post.body }}</p>
-            <div>
-                <div class="pull-right">
-                    {% for tag in post.tag_list %}
-                    <span class="label">{{ tag }}</span>
-                    {% endfor %}
+            <li>
+                <div class="thumbnail row">
+                    <div class="span9">
+                        <div class="page-header">
+                            <h3><a href="{% url_helper blog_post_path, post %}">{{ post.title }}</a></h3>
+                        </div>
+                    </div>
+                    <div class="span9">
+                        <div>
+                            <span class="badge badge-info"><i class="icon-user icon-white"></i>&nbsp {{ post.author.username }}</span>
+                            | <span class="badge badge-info"><i class="icon-calendar icon-white"></i>&nbsp {{ post.published_at | date: "%Y %h %d" }}</span>
+                            | <span class="badge badge-info"><a href="{% url_helper blog_post_path, post %}#comments"><i class="icon-comment icon-white"></i>&nbsp{{ post.approved_comments_count }}&nbsp</a></span>
+                        </div>
+                        <p></p>
+                    </div>
+                    <div class="span3">
+                        <img class="img-polaroid" alt="300x200" style="width: 300px; height: 200px;"
+                             src="http://lorempixel.com/300/200/city/">
+                    </div>
+                    <div class="span5">
+                        <p>{{ post.body }}</p>
+                        <hr>
+                    </div>
+                    <div class="pull-right">
+                        <i class="icon-tags"></i> Tags :
+                        {% for tag in post.base_tags %}
+                                <span class="label label-info"><i class="icon-tag icon-white"></i>
+                                    <a href="{% url_helper blog_tagged_posts_path, tag.id, tag.name_parameterize %}">&nbsp;{{ tag.name }}</a>
+                                </span>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <p>
-                <i class="icon-user"></i> <a href="#">Admin</a>
-                | <i class="icon-calendar"></i> {{ post.published_at }}
-                | <i class="icon-comment"></i> <a href="#">3 Comments</a>
-                | <i class="icon-share"></i> <a href="#">39 Shares</a>
-            </p>
+            </li>
             {% endfor %}
         </ul>
         {% else %}
-        {{ '.no_blog_articles_yet' | t }}
+        {{ 'no_blog_articles_yet' | t }}
         {% endif %}
+        {% paginator collection:posts %}
     </div>
-    <!--<div class="span3">-->
-        <!--{{content_for_right_sidebar}}-->
-    <!--</div>-->
 </div>
 
-{% paginator collection:posts %}
+

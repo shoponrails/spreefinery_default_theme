@@ -1,0 +1,49 @@
+<ul class="nav nav-pills" id="tab-navigator">
+    <li class="active"><a data-toggle="tab" href="#popular">Popular</a></li>
+    <li><a data-toggle="tab" href="#archive">Archive</a></li>
+    <li><a data-toggle="tab" href="#recent">Recent</a></li>
+</ul>
+
+<div class="tab-content well-small">
+    <div id="popular" class="tab-pane fade in active">
+        <table class="table table-striped table-bordered">
+            <tbody>
+            <tr>
+                <td>
+                    <i class="icon-star "></i>&nbsp; <a id="p1" href="#">df dfree dfff dsf dfail
+                    Acco dfd)</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="icon-star"></i>&nbsp;<a id="p2" href="#">dsf sdfFree dsf sdfil
+                    Account(s)</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="icon-star"></i>&nbsp;<a id="p3" href="#">sdf Free Esdfmail Accousdf)
+                    dfdfd</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="icon-star"></i>&nbsp; <a id="p4" href="#">sdf Free Eds fail Ac dfd
+                    fdf)</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="icon-star"></i>&nbsp; <a id="p5" href="#">dfee Ef dsf il df(s dfd
+                    f)</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    {% include 'refinery/blog/archive_tab' %}
+    {% include 'refinery/blog/recent_posts' %}
+</div>
+
+{% include 'refinery/blog/tag_cloud' %}
+{% include 'refinery/blog/categories' %}

@@ -1,0 +1,8 @@
+<div class="well-small">
+    <h3>Categories</h3>
+    <ul class="nav nav-pills nav-stacked">
+        {% for category in categories %}
+        <li><a href="{% url_helper blog_category_path, category %}"><i class="icon-check"></i>&nbsp{{ category.title }}({{ category.post_count }})</a></li>
+        {% endfor %}
+    </ul>
+</div>

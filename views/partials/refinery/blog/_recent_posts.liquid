@@ -1,0 +1,14 @@
+<div id="recent" class="tab-pane fade in ">
+    <table class="table table-striped table-bordered">
+        <tbody>
+        {% capture_variable recent %}{% recent_blog_posts count:5 %}{% endcapture_variable %}
+        {% for recent_post in recent %}
+        <tr>
+            <td>
+                <i class="icon-flag "></i>&nbsp; <a id="r1" href="{% url_helper blog_post_path, recent_post %}">{{ recent_post.title }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

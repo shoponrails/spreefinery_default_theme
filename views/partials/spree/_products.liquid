@@ -6,9 +6,9 @@
     {% for product in products %}
     <li class="span3">
         <div class="product thumbnail">
-            <a href="{{ 'product_path' | url_helper: product }}">{% image_for_product style:product %}</a>
+            <a href="{% url_helper product_path, product %}">{% image_for_product style:product %}</a>
             <div class="caption">
-                <a href="{{ 'product_path' | url_helper: product }}"> <h5>{{ product.name }}</h5></a>
+                <a href="{% url_helper product_path, product %}"> <h5>{{ product.name }}</h5></a>
                 {{ 'products_page.price' | t }}: {{ product.price_with_currency }}
             </div>
         </div>

@@ -1,3 +1,44 @@
-{% for category in post.categories %}
-<li>{{ category.title }}</li>
-{% endfor %}
+<div class="row">
+<div class="span4">
+    {% include 'refinery/blog/sidebar' %}
+</div>
+    <div class="span8">
+        <div>
+            <div class="page-header">
+                <h1>{{ post.title }}</h1>
+            </div>
+            One of our common need nowadays is Fast Internet and nowadays there are Many Internet
+            Service Providers which promise to deliver Good Internet Services according to their
+            plans and budget. In fact, whenever someone wants to buy a new Broadband connection,
+            then one of the factor that customer keeps in mind is Speed of that Broadband connection
+            to get the worth out of his money and A Good Internet Surfing experience. Now when
+            talking about Broadband Connection Speed, some terms we come across often are &ndash;
+            Upload Speeds , megabit and Speed tests, So we would be delivering some information
+            about these terms and how to check them.
+            <p></p>
+            <ul style="color: #3A87AD;" class="breadcrumb">
+                <li><i class="icon-calendar "></i>&nbsp;{{ post.published_at | date: "%Y %h %d" }}</li>
+                <li>&nbsp;&nbsp;<i class="icon-folder-open"></i>&nbsp; in Asp.Net</li>
+            </ul>
+            <h3>Tags</h3>
+            <p>
+                {% for tag in post.base_tags %}
+                <span class="label label-info"><i class="icon-tag icon-white"></i>
+                    <a href="{% url_helper blog_tagged_posts_path, tag.id, tag.name_parameterize %}">&nbsp;{{ tag.name }}</a>
+                </span>
+                {% endfor %}
+            </p>
+            <br>
+            <ul class="breadcrumb">
+                <li>Comments</li>
+            </ul>
+            {% for comment in post.approved_comments %}
+            <blockquote>
+                <p>{{ comment.message }}</p>
+                <small>{{ comment.name }}</small>
+            </blockquote>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
