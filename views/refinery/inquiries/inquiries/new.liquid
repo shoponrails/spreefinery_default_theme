@@ -1,36 +1,47 @@
-<div id="home-content" class="row">
-    <div class="span3">
-        <form method="post" id="new_inquiry" class="new_inquiry" action="/contact" accept-charset="UTF-8"><div style="margin:0;padding:0;display:inline"><input type="hidden" value="✓" name="utf8"><input type="hidden" value="b9wVCrrYP1AOTqM8QckBt2wuNEf9N3zj+5TGoCr9SUA=" name="authenticity_token"></div>
-
-            <div class="field">
-                <label for="inquiry_name" class="placeholder-fallback">Name *</label>
-                <input type="text" size="30" required="required" placeholder="Name" name="inquiry[name]" id="inquiry_name" class="text">
+<div class="row">
+    <ul class="breadcrumb span12">
+        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li class="active">Contact</li>
+    </ul>
+    <section class="span7">
+        <h1>Contact</h1>
+        <form class="well" action="/contact" accept-charset="UTF-8" method="post">
+            <div style="margin:0;padding:0;display:inline">
+                <input type="hidden" value="✓" name="utf8">
+                <input type="hidden" value="{{form_authenticity_token}}" name="authenticity_token">
             </div>
-            <div class="field">
-                <label for="inquiry_email" class="placeholder-fallback">Email *</label>
-                <input type="email" size="30" required="required" placeholder="Email" name="inquiry[email]" id="inquiry_email" class="text email">
+            <div class="row">
+                <div class="span6">
+                    {% capture_variable current_form_object %}{{ inquiry }}{% endcapture_variable %}
+                    {% include 'errors_messages' %}
+                </div>
             </div>
-
-            <div class="field">
-                <label for="inquiry_phone" class="placeholder-fallback">Phone</label>
-                <input type="text" size="30" placeholder="Phone" name="inquiry[phone]" id="inquiry_phone" class="text phone">
+            <div class="row">
+                <div class="span3">
+                    <label for="inquiry_name">First Name</label>
+                    <input type="text"  placeholder="Your Name" required="required" name="inquiry[name]" value="{{ inquiry.name }}" id="inquiry_name" class="span3">
+                    <label>Phone</label>
+                    <input type="text" placeholder="Your Phone" value="{{ inquiry.phone }}" name="inquiry[phone]" id="inquiry_phone" class="span3">
+                    <label for="inquiry_email">Email Address</label>
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span>
+                        <input type="email"  required="required" value="{{ inquiry.email }}" placeholder="Your email address" name="inquiry[email]" id="inquiry_email" class="span2">
+                    </div>
+                </div>
+                <div class="span3">
+                    <label for="inquiry_message">Message</label>
+                    <textarea rows="10" class="input-xlarge span3" required="required" placeholder="Message"
+                              name="inquiry[message]" id="inquiry_message" cols="40">{{ inquiry.message }}</textarea>
+                </div>
             </div>
-
-            <div class="field message_field">
-                <label for="inquiry_message" class="placeholder-fallback">Message *</label>
-                <textarea rows="8" required="required" placeholder="Message" name="inquiry[message]" id="inquiry_message" cols="40"></textarea>
-            </div>
-            <div class="actions">
-                <input type="submit" value="Send message" name="commit">
-                <a id="privacy_link" href="/pages/privacy-policy">We value your privacy</a>
+            <div class="controls controls-row well-large">
+                <a href="/pages/privacy-policy" class="btn btn-link btn-primary pull-left">We value your privacy</a>
+                <button class="btn btn-primary pull-right" type="submit">Send</button>
             </div>
         </form>
-        {{content_for_left_sidebar}}
-    </div>
-    <div class="span6">
-        {{content_for_body}}
-    </div>
-    <div class="span3">
-        {{content_for_right_sidebar}}
-    </div>
+    </section><!-- end left -->
+
+    <section class="span5">
+        <iframe width="100%" scrolling="no" height="450" frameborder="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=new+york+city&amp;aq=&amp;sll=37.6,-95.665&amp;sspn=60.867771,135.263672&amp;t=m&amp;ie=UTF8&amp;hq=&amp;hnear=New+York&amp;z=11&amp;iwloc=A&amp;output=embed" marginwidth="0" marginheight="0"></iframe>
+    </section><!--end right -->
 </div>

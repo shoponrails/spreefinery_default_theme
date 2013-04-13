@@ -2,6 +2,8 @@ en:
   continue: "Continue"
   login: "Login"
   and: "and"
+  oh_no: "Oh no!"
+  error_has_occured: "An error has occured. Click here for more information."
   front_page:
     hello_world: "Hello, world!"
     left_sidebar: "Left SideBar"
@@ -39,8 +41,6 @@ en:
     checkout: "Checkout"
   checkout_page:
     checkout: "Checkout"
-    oh_no: "Oh no!"
-    error_has_occured: "An error has occured. Click here for more information."
     place_order: "Place Order"
     new_customer: "New Customer"
     guest_checkout: "Guest Checkout"

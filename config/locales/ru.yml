@@ -2,6 +2,8 @@ ru:
   continue: "Продолжить"
   login: "Вход"
   and: "и"
+  oh_no: "О, нет!"
+  error_has_occured: "Ошибки! Кликните для просмотра подробностей."
   front_page:
     hello_world: "Привет, Мир!"
     left_sidebar: "Левый сайдбар"
@@ -38,8 +40,6 @@ ru:
     checkout: "Оформление заказа"
   checkout_page:
     checkout: "Оформление заказа"
-    oh_no: "О, нет!"
-    error_has_occured: "Ошибка! Кликните для просмотра подробностей."
     place_order: "Отправить заказ"
     new_customer: "Новый покупатель"
     guest_checkout: "Купить как гость"

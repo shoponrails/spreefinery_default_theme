@@ -1,0 +1,28 @@
+{% capture flash_error %}{% flash key:error %}{% endcapture %}
+{% if flash_error.size != 0 %}
+<div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ flash_error }}
+</div>
+{% endif %}
+
+{% capture error_messages_for %}{% error_messages_for current_form_object %}{% endcapture %}
+{% if error_messages_for.size != 0 %}
+<div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <a data-toggle="collapse" href="#error-content"><strong>{{ 'oh_no' | t }}</strong>{{ 'error_has_occured' | t }}</a>
+    <div id="error-content" class="collapse">
+        <ul style="margin-top: 10px;">
+            <li data-qrepeat="error errors" data-qtext="error"></li>
+        </ul>
+    </div>
+</div>
+{% content_for head %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        var errors = {{error_messages_for}};
+    $('#error-content').distal(errors);
+    });
+</script>
+{% end_content_for %}
+{% endif %}

@@ -1,4 +1,8 @@
 <div class="row">
+    <ul class="breadcrumb span12">
+        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li class="active">Blog</li>
+    </ul>
     <div class="span4">
         {% include 'refinery/blog/sidebar' %}
     </div>
@@ -8,12 +12,12 @@
             {% for post in posts %}
             <li>
                 <div class="thumbnail row">
-                    <div class="span9">
+                    <div class="span8">
                         <div class="page-header">
-                            <h3><a href="{% url_helper blog_post_path, post %}">{{ post.title }}</a></h3>
+                            <h1><a href="{% url_helper blog_post_path, post %}">{{ post.title }}</a></h1>
                         </div>
                     </div>
-                    <div class="span9">
+                    <div class="span8">
                         <div>
                             <span class="badge badge-info"><i class="icon-user icon-white"></i>&nbsp {{ post.author.username }}</span>
                             | <span class="badge badge-info"><i class="icon-calendar icon-white"></i>&nbsp {{ post.published_at | date: "%Y %h %d" }}</span>
@@ -22,8 +26,7 @@
                         <p></p>
                     </div>
                     <div class="span3">
-                        <img class="img-polaroid" alt="300x200" style="width: 300px; height: 200px;"
-                             src="http://lorempixel.com/300/200/city/">
+                        <img alt="300x200" style="width: 300px; height: 200px;" src="http://lorempixel.com/300/200/city/">
                     </div>
                     <div class="span5">
                         <p>{{ post.body }}</p>
@@ -32,9 +35,9 @@
                     <div class="pull-right">
                         <i class="icon-tags"></i> Tags :
                         {% for tag in post.base_tags %}
-                                <span class="label label-info"><i class="icon-tag icon-white"></i>
-                                    <a href="{% url_helper blog_tagged_posts_path, tag.id, tag.name_parameterize %}">&nbsp;{{ tag.name }}</a>
-                                </span>
+                            <span class="label label-info"><i class="icon-tag icon-white"></i>
+                                <a href="{% url_helper blog_tagged_posts_path, tag.id, tag.name_parameterize %}">&nbsp;{{ tag.name }}</a>
+                            </span>
                         {% endfor %}
                     </div>
                 </div>
