@@ -19,14 +19,15 @@
                     </div>
                     <div class="span8">
                         <div>
-                            <span class="badge badge-info"><i class="icon-user icon-white"></i>&nbsp {{ post.author.username }}</span>
-                            | <span class="badge badge-info"><i class="icon-calendar icon-white"></i>&nbsp {{ post.published_at | date: "%Y %h %d" }}</span>
+                            <span class="badge badge-info"><i class="icon-user icon-white"></i>&nbsp; {{ post.author.username }}</span>
+                            | <span class="badge badge-info"><i class="icon-calendar icon-white"></i>&nbsp; {{ post.published_at | date: "%Y %h %d" }}</span>
                             | <span class="badge badge-info"><a href="{% url_helper blog_post_path, post %}#comments"><i class="icon-comment icon-white"></i>&nbsp{{ post.approved_comments_count }}&nbsp</a></span>
                         </div>
                         <p></p>
                     </div>
                     <div class="span3">
-                        <img alt="300x200" style="width: 300px; height: 200px;" src="http://lorempixel.com/300/200/city/">
+                        <img alt="300x200" style="width: 300px; height: 200px;" class="img-polaroid"
+                             src="http://lorempixel.com/300/200/city/">
                     </div>
                     <div class="span5">
                         <p>{{ post.body }}</p>

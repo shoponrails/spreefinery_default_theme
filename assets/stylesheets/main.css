@@ -2,6 +2,12 @@ body {
     padding-top: 70px;
     padding-bottom: 40px;
 }
+a{
+    color: #959494;
+}
+a:hover{
+    color: #777;
+}
 
 footer {
     margin-top: 50px;
@@ -17,4 +23,106 @@ footer {
 }
 .tag4{
     font-size: 25px;
+}
+
+
+/*------------------------------------------------------------------
+[Circle Icon]
+*/
+
+.circle-icon {
+    position: relative;
+
+    width: 50px;
+    height: 50px;
+
+    background: #393939;
+
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.circle-icon div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 44px;
+    height: 44px;
+
+    margin-top: -22px;
+    margin-left: -22px;
+
+    font-size: 24px;
+    text-align: center;
+    line-height: 40px;
+    color: #777;
+
+    border: 2px solid #FFF;
+
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*------------------------------------------------------------------
+[Section Menu]
+*/
+.section-menu ul.nav-list {
+    border-right: 1px solid #E6E6E6;
+    margin-left: 0;
+    padding: 2em 0;
+}
+.section-menu ul.nav-list li.nav-header {
+    margin: 0;
+    padding-left: 5px;
+}
+
+
+.section-menu ul.nav-list li a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FAFAFA;
+    border-color: -moz-use-text-color #E6E6E6 #E6E6E6;
+    border-image: none;
+    border-radius: 0 0 0 0;
+    border-right: 1px solid #E6E6E6;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    box-shadow: 1px 1px 1px #FFFFFF;
+    color: rgba(36, 36, 36, 0.698);
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 -1px 0 3px;
+    padding: 8px 15px;
+    position: relative;
+    text-shadow: none;
+}
+
+.section-menu ul.nav-list li a.first {
+    border-top: 1px solid #E6E6E6;
+}
+
+.section-menu ul.nav-list li.active > a, .section-menu ul.nav-list li.active > a:hover {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-left: 4px solid #777777;
+    border-right-color: #FFFFFF;
+    color: rgba(36, 36, 36, 0.8);
+    margin: 0 -1px 0 0;
+}
+
+.section-menu ul.nav-list li a small {
+    color: rgba(36, 36, 36, 0.5);
+    display: block;
+    font-weight: normal;
 }

@@ -2,4 +2,9 @@
 
  cd Rails.root && git clone git://github.com/shoponrails/spreefinery_default_theme.git themes/default
 
- Tools for creating themes based on The Twitter Bootstrap: http://bootsnipp.com/resources
+== Requirements
+
+http://exacttarget.github.io/fuelux
+
+
+Tools for creating themes based on the Twitter Bootstrap: http://bootsnipp.com/resources

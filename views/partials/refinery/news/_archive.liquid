@@ -1,0 +1,9 @@
+<h1>Archive</h1>
+<table class="table table-striped table-bordered">
+    <tbody>
+    {% capture_variable news_archive %}{% news_item_archive_widget %}{% endcapture_variable %}
+    {% for item in news_archive %}
+        <tr><td><i class="icon-calendar"></i>&nbsp;<a href="{{ item.url }}">{{ item.text }}</a></td></tr>
+    {% endfor %}
+    </tbody>
+</table>
