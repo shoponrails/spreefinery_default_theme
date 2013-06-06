@@ -27,7 +27,8 @@
         <div><strong>{{ product.price_with_currency }}</strong></div>
         {% form_for 'order' as:post url_helper:populate_orders_path, html:"{ id:'basket', class:'product-cart form-inline'}" %}
         <div>
-            {% if product.has_variants? %}
+            {% capture_variable variants %}{% variants_and_option_values %}{% endcapture_variable %}
+            {% if variants.size > 0 %}
             <ul class="nav nav-list">{% variants_for product %}</ul>
             {% endif %}
         </div>
