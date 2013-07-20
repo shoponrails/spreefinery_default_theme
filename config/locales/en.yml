@@ -18,7 +18,7 @@ en:
     sign_in: "Sign In"
   nav_bar:
     product_search: "Product Search"
-  paginator:
+  breadcrumbs:
     products: "Products"
     home: "Home"
   products_page:

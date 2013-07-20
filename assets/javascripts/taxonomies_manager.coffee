@@ -25,15 +25,15 @@ class TaxonomiesManager
           default:
             valid_children: "none"
             icon:
-              image: "/assets/jstree/file-img.png"
+              image: "/assets/jstree/file.png"
           folder:
             valid_children: ["default", "folder"]
             icon:
-              image: "/assets/jstree/folder-img.png"
+              image: "/assets/jstree/folder.png"
           drive:
             valid_children: ["default", "folder"]
             icon:
-              image: "/assets/jstree/root-img.png"
+              image: "/assets/jstree/root.png"
             start_drag: false
             move_node: false
             delete_node: false

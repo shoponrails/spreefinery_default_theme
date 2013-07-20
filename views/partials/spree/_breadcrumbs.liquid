@@ -1,8 +1,8 @@
 {% content_for head %}
 <script type="text/javascript">
     $(document).ready(function(){
-        var breads = {{ taxon | breadcrumbs_json }};
-    $('#taxon-breadcrumbs').distal(breads);
+      var breads = {{ taxon | breadcrumbs_json }};
+      $('#taxon-breadcrumbs').distal(breads);
     });
 </script>
 {% end_content_for %}

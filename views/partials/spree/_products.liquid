@@ -1,9 +1,6 @@
-{% unless products %}
-  {% capture_variable products %}{% get_products per_page:6 %}{% endcapture_variable %}
-{% endunless %}
-
+{% capture_variable products_array %}{% get_products per_page:6 %}{% endcapture_variable %}
 <ul class="thumbnails">
-    {% for product in products %}
+    {% for product in products_array %}
     <li class="span3">
         <div class="product thumbnail">
             <a href="{% url_helper product_path, product %}">{% image_for_product style:product %}</a>
@@ -15,4 +12,4 @@
     </li>
     {% endfor %}
 </ul>
-{% paginator collection:products %}
+{% paginator collection:products_array %}
