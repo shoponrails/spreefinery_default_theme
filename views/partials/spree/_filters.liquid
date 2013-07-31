@@ -1,7 +1,7 @@
 <form method="get" id="sidebar_products_search" action="" accept-charset="UTF-8">
     <div style="margin:0;padding:0;display:inline"><input type="hidden" value="✓" name="utf8"></div>
     <input type="hidden" name="per_page" id="per_page">
-    {% capture_variable filters %}{% products_filters %}{% endcapture_variable %}
+    {% capture_variable filters %}{% products_filters_tag %}{% endcapture_variable %}
     {% for filter in filters %}
         <h6 class="filter-title">{{ filter.name }}</h6>
         <dl class="dl-horizontal">

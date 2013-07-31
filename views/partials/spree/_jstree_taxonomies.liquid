@@ -1,6 +1,6 @@
 <div id="jsTree" class="taxonomies jsTree jstree-apple">
     <ul>
-        {% for taxonomy in get_taxonomies %}
+        {% for taxonomy in get_taxonomies_tag %}
         <li id="taxonomy_{{taxonomy.id}}">
             <a href="#">{{taxonomy.name}}</a>
             {{taxonomy.root | taxons_tree: taxon, 3}}

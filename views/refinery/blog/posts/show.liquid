@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="span4">
+    <div class="col-lg-4">
         {% include 'refinery/blog/sidebar' %}
     </div>
-    <div class="span8">
+    <div class="col-lg-8">
         <ul class="breadcrumb">
             <li><a href="/">Home</a> <span class="divider">/</span></li>
             <li><a href="/blog">Blog</a> <span class="divider">/</span></li>
@@ -31,14 +31,14 @@
                 <div id="tags-tab" class="tab-pane fade in">
                     {% for tag in post.base_tags %}
                         <span class="label label-info"><i class="icon-tag icon-white"></i>
-                            <a href="{% url_helper blog_tagged_posts_path, tag.id, tag.name_parameterize %}">&nbsp;{{ tag.name }}</a>
+                            <a href="{% url_helper path:blog_tagged_posts_path id:tag.id name:tag.name_parameterize %}">&nbsp;{{ tag.name }}</a>
                         </span>
                     {% endfor %}
                 </div>
                 <div id="categories-tab" class="tab-pane fade in">
                     <ul class="breadcrumb">
                         {% for category in post.categories %}
-                        <li><a href="{% url_helper blog_category_path, category %}"><i class="icon-check"></i>&nbsp{{ category.title }}({{ category.post_count }})</a></li>
+                        <li><a href="{% url_helper path:blog_category_path object:category %}"><i class="icon-check"></i>&nbsp{{ category.title }}({{ category.post_count }})</a></li>
                         {% endfor %}
                     </ul>
                 </div>

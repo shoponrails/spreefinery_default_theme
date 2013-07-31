@@ -4,7 +4,7 @@
         {% for category in categories %}
         <tr>
             <td>
-                <a href="{% url_helper blog_category_path, category %}"><i class="icon-check"></i>&nbsp;{{ category.title }}({{ category.post_count }})</a>
+                <a href="{% url_helper path:blog_category_path object:category %}"><i class="icon-check"></i>&nbsp;{{ category.title }}({{ category.post_count }})</a>
             </td>
         </tr>
         {% endfor %}

@@ -22,12 +22,12 @@
         {% for line_item in order.line_items %}
         <tr>
             <td class="image">
-                <a href="{% url_helper product_path, line_item.variant.product %}">
+                <a href="{% url_helper path:product_path object:line_item.variant.product %}">
                     <img src="{{line_item.variant.product.small_image_url}}" alt="{{line_item.variant.product.name}}" title="{{line_item.variant.product.name}}">
                 </a>
             </td>
             <td class="name">
-                <a href="{% url_helper product_path, line_item.variant.product %}">{{line_item.variant.product.name}}</a>
+                <a href="{% url_helper path:product_path object:line_item.variant.product %}">{{line_item.variant.product.name}}</a>
                 <div>{{ line_item.variant | line_item_description }}</div>
                 <div>{{ line_item.variant.options_text }}</div>
             </td>
@@ -46,12 +46,12 @@
     </table>
 </div>
 <div class="row">
-    <div class="input-append span9" style="margin-top: 15px;">
-        <input type="text" name="order[coupon_code]" id="order_coupon_code" placeholder="Coupon Code" class="span2" />
+    <div class="input-append col-lg-9" style="margin-top: 15px;">
+        <input type="text" name="order[coupon_code]" id="order_coupon_code" placeholder="Coupon Code" class="col-lg-2" />
         <button type="submit" class="btn">{{ 'cart_page.apply' | t }}</button>
     </div>
 
-    <div class="span3" style="text-align: right;">
+    <div class="col-lg-3" style="text-align: right;">
       <dl class="dl-horizontal">
         <dt>{{ 'cart_page.sub_total' | t }}</dt>
         <dd>{{ order.display_item_total }}</dd>

@@ -5,7 +5,7 @@
         {% for popular_post in popular %}
         <tr>
             <td>
-                <i class="icon-star "></i>&nbsp; <a href="{% url_helper blog_post_path, popular_post %}">{{ popular_post.title }}</a>
+                <i class="icon-star "></i>&nbsp; <a href="{% url_helper path:blog_post_path object:popular_post %}">{{ popular_post.title }}</a>
             </td>
         </tr>
         {% endfor %}

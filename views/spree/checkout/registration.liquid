@@ -3,7 +3,7 @@
 {% end_content_for %}
 
 <h1>{{ 'checkout_page.checkout' | t }}</h1>
-<div class="span8" style="margin-left: 0;">
+<div class="col-lg-8" style="margin-left: 0;">
   <legend>{{ 'checkout_page.new_customer' | t }}</legend>
   <div class="tabbable">
     <ul class="nav nav-tabs">
@@ -41,7 +41,7 @@
     </div>
   </div>
 </div>
-<div id="login" class="span4">
+<div id="login" class="col-lg-4">
   <legend>{{ 'checkout_page.returning_customer' | t }}</legend>
   {% error_messages_for refinery_user %}
   {% form_for 'refinery_user' as:post  url_helper:user_session_path, method:post, html:"{ id:'login-form', class:'my-class'}" %}

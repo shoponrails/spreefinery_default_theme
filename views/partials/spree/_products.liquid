@@ -1,15 +1,14 @@
-{% capture_variable products_array %}{% get_products per_page:6 %}{% endcapture_variable %}
-<ul class="thumbnails">
-    {% for product in products_array %}
-    <li class="span3">
-        <div class="product thumbnail">
-            <a href="{% url_helper product_path, product %}">{% image_for_product style:product %}</a>
-            <div class="caption">
-                <a href="{% url_helper product_path, product %}"> <h5>{{ product.name }}</h5></a>
-                {{ 'products_page.price' | t }}: {{ product.price_with_currency }}
-            </div>
+{% capture_variable products_array %}{% get_products_tag per_page:50 %}{% endcapture_variable %}
+{% for product in products_array %}
+
+<div class="col-lg-4">
+    <div class="product thumbnail">
+        <a href="{% url_helper path:product_path, object:product %}">{% image_for_product_tag style:product %}</a>
+        <div class="caption">
+            <a href="{% url_helper path:product_path, object:product %}"> <h5>{{ product.name }}</h5></a>
+            {{ 'products_page.price' | t }}: {{ product.price_with_currency }}
         </div>
-    </li>
-    {% endfor %}
-</ul>
+    </div>
+</div>
+{% endfor %}
 {% paginator collection:products_array %}

@@ -1,104 +1,140 @@
 {% content_for head %}
+<script type="text/javascript" src="/themes/assets/javascripts/jquery.easing.1.3.js"></script>
+
+<script type="text/javascript" src="/themes/assets/javascripts/multizoom.js"></script>
+<link href="/themes/assets/stylesheets/multizoom.css" rel="stylesheet">
+
+<script type="text/javascript" src="/themes/assets/javascripts/scroller.min.js"></script>
+<link href="/themes/assets/stylesheets/scroller.css" rel="stylesheet">
+
 <script type="text/javascript" src="/themes/assets/javascripts/product.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        $('#multizoom').addimagezoom({ // multi-zoom: options same as for previous Featured Image Zoomer's addimagezoom unless noted as '- new'
+            descArea: '#image-description', // description selector (optional - but required if descriptions are used) - new
+            speed: 1500, // duration of fade in for new zoomable images (in milliseconds, optional) - new
+            descpos: true, // if set to true - description position follows image position at a set distance, defaults to false (optional) - new
+            imagevertcenter: true, // zoomable image centers vertically in its container (optional) - new
+            magvertcenter: true, // magnified area centers vertically in relation to the zoomable image (optional) - new
+            zoomrange: [1, 10],
+            magnifiersize: [250,250],
+            magnifierpos: 'right',
+            cursorshadecolor: '#fdffd5',
+            cursorshade: true //<-- No comma after last option!
+        });
+
+
+        $('.scroller').scroller({
+            container: {
+                easing: 'easeOutExpo'
+            },
+            options: {
+                margin: 30,
+                zoom: 2,
+                easing: ['easeInSine', 'easeOutElastic'],
+                duration: [200, 1000]
+            },
+            onclick: function(a, img){
+              var alt = img.attr('alt'), h2 = $('.title');
+            }
+        });
+    });
+
+</script>
 {% end_content_for %}
 
 <div id="product-content" class="row">
-  <div class="span3">
-    {% include 'spree/taxonomies' %}
+  <div class="col-lg-2">
+      {% include 'spree/taxonomies' %}
   </div>
-  <div class="span9">
-      {% include 'spree/breadcrumbs' %}
-    <div class="row">
-    <div class="product-images span4">
-        <a class="zoom" href="{% product_image_url object:product, style:original %}">{% image_for_product style:product %}</a>
-        <ul class="thumbnails">
-
-            <li class="span1">
-                <a class="thumbnail" href="#">
-                    {% image_for_product style:mini %}
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="product-details span5">
-        <h2 class="product-title">{{ product.name }}</h2>
-        {% error_messages_for order %}
-        <div><strong>{{ product.price_with_currency }}</strong></div>
-        {% form_for 'order' as:post url_helper:populate_orders_path, html:"{ id:'basket', class:'product-cart form-inline'}" %}
-        <div>
-            {% capture_variable variants %}{% variants_and_option_values %}{% endcapture_variable %}
-            {% if variants.size > 0 %}
-            <ul class="nav nav-list">{% variants_for product %}</ul>
-            {% endif %}
-        </div>
-        <div>
-            <label>Qty:</label>
-            {% if product.on_sale? %}
-                {% if product.has_variants? %}
-                    <input type="text" placeholder="1" class="span1" value="1" name="quantity" min="1" max="{{ product.on_hand }}" size="3">
-                {% else %}
-                    <input type="text" placeholder="1" class="span1" value="1" name="variants[{{ product.master.id }}]" min="1" max="{{ product.on_hand }}" size="3">
-                {% endif %}
-            {% else %}
-                <strong>{{ 'product_page.out_of_stock' | t }}</strong>
-            {% endif %}
-            <button type="submit" class="btn btn-primary">{{ 'product_page.add_to_cart' | t }}</button>
-        </div>
-        {% endform_for %}
-    </div>
-    </div>
-
-    <div class="tabbable">
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#1">Description</a></li>
-            <li><a data-toggle="tab" href="#2">{{ 'product_page.specifications' | t }}</a></li>
-            <li><a data-toggle="tab" href="#3">{{ 'product_page.related_products' | t }}</a></li>
-        </ul>
-        <div class="tab-content">
-            <div id="1" class="tab-pane active">
-                <p>{{ product | product_description }}</p>
+    <div class="col-lg-10">
+        {% include 'spree/breadcrumbs' %}
+        <div class="product-images col-lg-7">
+            {% capture_variable images %}{% product_images_tag product:product %}{% endcapture_variable %}
+            <div class="targetarea">
+                <img id="multizoom" alt="zoomable" title="{{ product.name }}" src="{% product_image_url_tag object:product, style:product %}"/>
+                <div id="image-description">{{ product.name }}</div>
             </div>
-            <div id="2" class="tab-pane">
-              <ul>
-                {% for product_property in product_properties %}
-                <li>
-                    <strong>{{ product_property.property.presentation }}:</strong>
-                    <span>{{ product_property.value }}</span>
-                </li>
+
+            <div class="col-lg-12 scroller multizoom thumbs">
+                <div class="inside">
+                    {% for product_image in images.product_images %}
+                    <a href="{{ product_image.product }}" data-large="{{ product_image.original }}" >
+                        <img src="{{ product_image.small }}" alt="{{ product.name }}" title="{{ product.name }}"/>
+                    </a>
+                    {% endfor %}
+                    {% for variant_image in images.variant_images %}
+                    <a href="{{ variant_image.product }}" data-large="{{ variant_image.original }}" data-title="{{ product.name }}">
+                        <img src="{{ variant_image.small }}" alt="{{ product.name }}" title="{{ product.name }}"/>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="product-details col-lg-5">
+            <h2 class="product-title">{{ product.name }}</h2>
+            {% form_for 'order' as:post url_helper:populate_orders_path, html:"{ id:'basket', class:'product-cart form-horizontal'}" %}
+            {% error_messages_for order %}
+            <div class="form-group">
+                {% capture_variable variants %}{% variants_and_option_values_tag %}{% endcapture_variable %}
+                {% if variants.size > 0 %}
+                {% for hash in variants %}
+                <div class="radio">
+                    <input class="form-control" type="radio" value="{{ hash.variant.id }}" name="products[{{ product.id }}]" id="products_{{ product.id }}_{{ hash.variant.id }}" data-price="{{ hash.variant.price_in }}">
+                    <label for="products_{{ product.id }}_{{ hash.variant.id }}">
+                        <span class="variant-description">{{ hash.variant | variant_options }}</span>
+                        {% capture_variable price %}{% variant_price_tag variant:hash.variant %}{% endcapture_variable %}
+                        {% if price %}<span class="price diff">{{ price }}</span>{% endif %}
+                    </label>
+                </div>
                 {% endfor %}
-              </ul>
+                {% endif %}
             </div>
-            <div id="3" class="tab-pane">
-                <ul class="thumbnails related_products">
-                    <li class="span2">
-                        <div class="thumbnail">
-                            <a href="product.html"><img src="/themes/assets/images/220x180.gif" alt=""></a>
-                            <div class="caption">
-                                <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span2">
-                        <div class="thumbnail">
-                            <a href="product.html"><img src="/themes/assets/images/220x180.gif" alt=""></a>
-                            <div class="caption">
-                                <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="span2">
-                        <div class="thumbnail">
-                            <a href="product.html"><img src="/themes/assets/images/220x180.gif" alt=""></a>
-                            <div class="caption">
-                                <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                            </div>
-                        </div>
-                    </li>
+            <div class="form-group">
+                <p class="help-block">Price: <strong>{{ product.price_with_currency }}</strong></p>
+                <div class="col-lg-3">
+                    <label for="quantity">Qty:</label>
+                    {% if variants.size > 0 %}
+                      <input type="text" id="quantity" placeholder="1" class="form-control" value="1" name="quantity" min="1" max="{{ product.on_hand }}" size="3">
+                    {% else %}
+                    <input type="text" id="quantity" placeholder="1" class="form-control" value="1" name="variants[{{ product.master.id }}]" min="1" size="3">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">{{ 'product_page.add_to_cart' | t }}</button>
+            </div>
+            {% endform_for %}
+        </div>
+        <div class="col-lg-12">
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#1">Description</a></li>
+                    <li><a data-toggle="tab" href="#2">{{ 'product_page.specifications' | t }}</a></li>
+                    <li><a data-toggle="tab" href="#3">{{ 'product_page.related_products' | t }}</a></li>
                 </ul>
+                <div class="tab-content">
+                    <div id="1" class="tab-pane active">
+                        <p>{{ product | product_description }}</p>
+                    </div>
+                    <div id="2" class="tab-pane">
+                        <ul>
+                            {% for product_property in product_properties %}
+                            <li>
+                                <strong>{{ product_property.property.presentation }}:</strong>
+                                <span>{{ product_property.value }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="3" class="tab-pane">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

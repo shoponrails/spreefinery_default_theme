@@ -1,35 +1,35 @@
 <div class="row">
-    <ul class="breadcrumb span12">
+    <ul class="breadcrumb col-lg-12">
         <li><a href="/">Home</a> <span class="divider">/</span></li>
         <li class="active">Blog</li>
     </ul>
-    <div class="span4">
+    <div class="col-lg-4">
         {% include 'refinery/blog/sidebar' %}
     </div>
-    <div class="span8">
+    <div class="col-lg-8">
         {% if posts.size > 0 %}
         <ul class="thumbnails">
             {% for post in posts %}
             <li>
                 <div class="thumbnail row">
-                    <div class="span8">
+                    <div class="col-lg-8">
                         <div class="page-header">
-                            <h1><a href="{% url_helper blog_post_path, post %}">{{ post.title }}</a></h1>
+                            <h1><a href="{% url_helper path:blog_post_path object:post %}">{{ post.title }}</a></h1>
                         </div>
                     </div>
-                    <div class="span8">
+                    <div class="col-lg-8">
                         <div>
                             <span class="badge badge-info"><i class="icon-user icon-white"></i>&nbsp; {{ post.author.username }}</span>
                             | <span class="badge badge-info"><i class="icon-calendar icon-white"></i>&nbsp; {{ post.published_at | date: "%Y %h %d" }}</span>
-                            | <span class="badge badge-info"><a href="{% url_helper blog_post_path, post %}#comments"><i class="icon-comment icon-white"></i>&nbsp{{ post.approved_comments_count }}&nbsp</a></span>
+                            | <span class="badge badge-info"><a href="{% url_helper path:blog_post_path object:post %}#comments"><i class="icon-comment icon-white"></i>&nbsp{{ post.approved_comments_count }}&nbsp</a></span>
                         </div>
                         <p></p>
                     </div>
-                    <div class="span3">
+                    <div class="col-lg-3">
                         <img alt="300x200" style="width: 300px; height: 200px;" class="img-polaroid"
                              src="http://lorempixel.com/300/200/city/">
                     </div>
-                    <div class="span5">
+                    <div class="col-lg-5">
                         <p>{{ post.body }}</p>
                         <hr>
                     </div>
@@ -37,7 +37,7 @@
                         <i class="icon-tags"></i> Tags :
                         {% for tag in post.base_tags %}
                             <span class="label label-info"><i class="icon-tag icon-white"></i>
-                                <a href="{% url_helper blog_tagged_posts_path, tag.id, tag.name_parameterize %}">&nbsp;{{ tag.name }}</a>
+                                <a href="{% url_helper path:blog_tagged_posts_path id:tag.id name:tag.name_parameterize %}">&nbsp;{{ tag.name }}</a>
                             </span>
                         {% endfor %}
                     </div>

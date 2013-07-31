@@ -2,7 +2,7 @@
 {% capture_variable comments_allowed %}{% blog_comments_allowed %}{% endcapture_variable %}
 {% if comments_allowed == true %}
 <div class="row">
-    <div class="span8">
+    <div class="col-lg-8">
         <ul class="breadcrumb">
             <li>Your comment</li>
         </ul>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="controls well-small">
-                <textarea class="span7" rows="5" name="comment[message]" placeholder="Your Message" id="comment_message">
+                <textarea class="col-lg-7" rows="5" name="comment[message]" placeholder="Your Message" id="comment_message">
                     {{ current_form_object.message }}
                 </textarea>
             </div>
@@ -38,7 +38,7 @@
 </div>
 {% endif %}
 <div class="row">
-    <div class="span7">
+    <div class="col-lg-7">
         <ul class="breadcrumb">
             <li>Comments ({{ post.approved_comments.size }})</li>
         </ul>

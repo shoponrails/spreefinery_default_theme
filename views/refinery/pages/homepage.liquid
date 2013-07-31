@@ -1,16 +1,18 @@
 {% if content_for_hero-unit %}
-<div id="home-banner" class="hero-unit">
+<div id="home-banner" class="jumbotron">
     {{content_for_hero-unit}}
 </div>
 {% endif %}
-<div id="home-content" class="row">
-    <div class="span3">
-       {{content_for_left_sidebar}}
-    </div>
-    <div class="span6">
-        {{content_for_body}}
-    </div>
-    <div class="span3">
-        {{content_for_right_sidebar}}
+<div id="home-content" class="body-content">
+    <div class="row">
+        <div class="col-lg-3">
+            {{content_for_left_sidebar}}
+        </div>
+        <div class="col-lg-6">
+            {{content_for_body}}
+        </div>
+        <div class="col-lg-3">
+            {{content_for_right_sidebar}}
+        </div>
     </div>
 </div>

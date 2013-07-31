@@ -1,0 +1,25 @@
+.scroller {
+    height:100px;
+    overflow:hidden;
+    position:relative;
+}
+
+.scroller .inside {
+    position:absolute;
+    top:50%;
+    left:0;
+    height:100px;
+    margin-top:-50px;
+}
+
+.scroller a {
+    display:block;
+    position:absolute;
+    width:100px;
+    height:100px;
+    overflow:hidden;
+    -moz-border-radius:50px;
+    -webkit-border-radius:100px;
+    border-radius:100px;
+    border:5px solid #ccc;
+}

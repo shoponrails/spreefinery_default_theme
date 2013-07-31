@@ -1,50 +1,52 @@
-<!-- The navbar structure is so tightly coupled with Bootstrap, there's no point making it Sass friendly -->
 <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="/">{{site_name}}</a>
-            <div class="nav-collapse collapse">
-                {% bootstrap_pages_menu %}
-                 <ul class="nav pull-right">
-                    <li>
-                        <form action="{% url_helper products_path %}" class="navbar-form">
-                            <input name="keywords" type="text" class="search-query input" placeholder="{{ 'nav_bar.product_search' | t }}">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">{{site_name}}</a>
+        <div class="nav-collapse collapse">
+            {% bootstrap_pages_menu %}
+            <ul class="nav navbar-nav pull-right">
+                <li>
+                    <form action="{% url_helper path:products_path %}" class="navbar-form">
+                        <input name="keywords" type="text" class="search-query input" placeholder="{{ 'nav_bar.product_search' | t }}">
+                    </form>
+                </li>
+                {% unless spree_current_user %}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                    <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="padding: 15px; padding-bottom: 0px;">
+                        <form accept-charset="UTF-8" action="/refinery/users/login" id="new_refinery_user" method="post">
+                            <div style="margin:0;padding:0;display:inline">
+                                <input name="utf8" type="hidden" value="✓">
+                                <input name="authenticity_token" type="hidden" value="{{form_authenticity_token}}">
+                            </div>
+                          <fieldset>
+                            <div class="form-group">
+                                <input style="margin-bottom: 15px;" class="form-control" id="refinery_user_login" placeholder="Username" name="refinery_user[login]" type="text">
+                                <input style="margin-bottom: 15px;" class="form-control" placeholder="Password" autocomplete="off" id="refinery_user_password" name="refinery_user[password]" size="30" type="password">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="refinery_user[remember_me]" type="hidden" value="0">
+                                <input class="form-control" style="float: left; margin-right: 10px;" type="checkbox" name="refinery_user[remember_me]" id="refinery_user_remember_me" value="1">
+                                <label class="string optional control-label" for="refinery_user_remember_me"> Remember me</label>
+                            </div>
+                            <div class="form-group">
+                                <a class="btn-link" href="/refinery/users/password/new">I forgot my password</a>
+                                <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
+                                <label style="text-align:center;margin-top:5px">or</label>
+                                <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
+                                <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
+                            </div>
+                          </fieldset>
                         </form>
-                    </li>
-                    {% unless spree_current_user %}
-                     <li class="dropdown">
-                         <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-                         <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-                             <form accept-charset="UTF-8" action="/refinery/users/login" id="new_refinery_user" method="post">
-                                 <div style="margin:0;padding:0;display:inline">
-                                     <input name="utf8" type="hidden" value="✓">
-                                     <input name="authenticity_token" type="hidden" value="{{form_authenticity_token}}">
-                                 </div>
-                                 <input style="margin-bottom: 15px;" id="refinery_user_login" placeholder="Username" name="refinery_user[login]" type="text">
-                                 <input style="margin-bottom: 15px;" placeholder="Password" autocomplete="off" id="refinery_user_password" name="refinery_user[password]" size="30" type="password">
+                    </div>
+                </li>
+                {% endunless %}
+            </ul>
 
-                                 <input name="refinery_user[remember_me]" type="hidden" value="0">
-                                 <input style="float: left; margin-right: 10px;" type="checkbox" name="refinery_user[remember_me]"
-                                        id="refinery_user_remember_me" value="1">
-                                 <label class="string optional" for="refinery_user_remember_me"> Remember me</label>
-
-                                 <a class="btn-link" href="/refinery/users/password/new">I forgot my password</a>
-                                 <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
-                                 <label style="text-align:center;margin-top:5px">or</label>
-                                 <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
-                                 <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
-                             </form>
-                         </div>
-                     </li>
-                    {% endunless %}
-                </ul>
-
-            </div><!--/.nav-collapse -->
-        </div>
+        </div><!--/.nav-collapse -->
     </div>
 </div>

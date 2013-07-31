@@ -1,35 +1,35 @@
 <div class="row">
-    <ul class="breadcrumb span12">
+    <ul class="breadcrumb col-lg-12">
         <li><a href="/">Home</a> <span class="divider">/</span></li>
         <li class="active">Contact</li>
     </ul>
-    <section class="span7">
+    <section class="col-lg-7">
         <form class="well" action="/contact" accept-charset="UTF-8" method="post">
             <div style="margin:0;padding:0;display:inline">
                 <input type="hidden" value="✓" name="utf8">
                 <input type="hidden" value="{{form_authenticity_token}}" name="authenticity_token">
             </div>
             <div class="row">
-                <div class="span6">
+                <div class="col-lg-6">
                     {% capture_variable current_form_object %}{{ inquiry }}{% endcapture_variable %}
                     {% include 'errors_messages' %}
                 </div>
             </div>
             <div class="row">
-                <div class="span3">
+                <div class="col-lg-3">
                     <label for="inquiry_name">First Name</label>
-                    <input type="text"  placeholder="Your Name" required="required" name="inquiry[name]" value="{{ inquiry.name }}" id="inquiry_name" class="span3">
+                    <input type="text"  placeholder="Your Name" required="required" name="inquiry[name]" value="{{ inquiry.name }}" id="inquiry_name" class="col-lg-3">
                     <label>Phone</label>
-                    <input type="text" placeholder="Your Phone" value="{{ inquiry.phone }}" name="inquiry[phone]" id="inquiry_phone" class="span3">
+                    <input type="text" placeholder="Your Phone" value="{{ inquiry.phone }}" name="inquiry[phone]" id="inquiry_phone" class="col-lg-3">
                     <label for="inquiry_email">Email Address</label>
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-envelope"></i></span>
-                        <input type="email"  required="required" value="{{ inquiry.email }}" placeholder="Your email address" name="inquiry[email]" id="inquiry_email" class="span2">
+                        <input type="email"  required="required" value="{{ inquiry.email }}" placeholder="Your email address" name="inquiry[email]" id="inquiry_email" class="col-lg-2">
                     </div>
                 </div>
-                <div class="span3">
+                <div class="col-lg-3">
                     <label for="inquiry_message">Message</label>
-                    <textarea rows="10" class="input-xlarge span3" required="required" placeholder="Message"
+                    <textarea rows="10" class="input-xlarge col-lg-3" required="required" placeholder="Message"
                               name="inquiry[message]" id="inquiry_message" cols="40">{{ inquiry.message }}</textarea>
                 </div>
             </div>
@@ -40,7 +40,7 @@
         </form>
     </section><!-- end left -->
 
-    <section class="span5">
+    <section class="col-lg-5">
         <iframe width="100%" scrolling="no" height="380" frameborder="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=new+york+city&amp;aq=&amp;sll=37.6,-95.665&amp;sspn=60.867771,135.263672&amp;t=m&amp;ie=UTF8&amp;hq=&amp;hnear=New+York&amp;z=11&amp;iwloc=A&amp;output=embed" marginwidth="0" marginheight="0"></iframe>
     </section><!--end right -->
 </div>
