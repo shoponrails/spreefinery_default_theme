@@ -11,7 +11,7 @@
             <ul class="nav navbar-nav pull-right">
                 <li>
                     <form action="{% url_helper path:products_path %}" class="navbar-form">
-                        <input name="keywords" type="text" class="search-query input" placeholder="{{ 'nav_bar.product_search' | t }}">
+                        <input name="keywords" type="text" class="search-query input" placeholder="{{ 'nav_bar.product_search' | translate }}">
                     </form>
                 </li>
                 {% unless spree_current_user %}

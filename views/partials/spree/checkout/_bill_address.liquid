@@ -1,25 +1,25 @@
-<legend>{{ 'address_page.your_billing_address' | t }}</legend>
+<legend>{{ 'address_page.your_billing_address' | translate }}</legend>
 
 <div class="control-group">
-  <label class="control-label" for="order[bill_address_attributes][firstname]">{{ 'address_page.first_name' | t }}</label>
+  <label class="control-label" for="order[bill_address_attributes][firstname]">{{ 'address_page.first_name' | translate }}</label>
   <div class="controls">
     <input name="order[bill_address_attributes][firstname]" value="{{current_order.bill_address.firstname}}" class="required" type="text">
   </div>
 </div>
 <div class="control-group">
-  <label class="control-label" for="order[bill_address_attributes][lastname]">{{ 'address_page.last_name' | t }}</label>
+  <label class="control-label" for="order[bill_address_attributes][lastname]">{{ 'address_page.last_name' | translate }}</label>
   <div class="controls">
     <input name="order[bill_address_attributes][lastname]" value="{{current_order.bill_address.lastname}}" class="required" type="text">
   </div>
 </div>
 <div class="control-group">
-  <label class="control-label" for="order[bill_address_attributes][phone]">{{ 'address_page.phone_number' | t }}</label>
+  <label class="control-label" for="order[bill_address_attributes][phone]">{{ 'address_page.phone_number' | translate }}</label>
   <div class="controls">
     <input name="order[bill_address_attributes][phone]" value="{{current_order.bill_address.phone}}" class="required" type="text">
   </div>
 </div>
 <div class="control-group">
-  <label class="control-label" for="order[bill_address_attributes][address1]">{{ 'address_page.street_address' | t }}</label>
+  <label class="control-label" for="order[bill_address_attributes][address1]">{{ 'address_page.street_address' | translate }}</label>
   <div class="controls">
     <input name="order[bill_address_attributes][address1]" value="{{current_order.bill_address.address1}}" class="required" type="text">
   </div>
@@ -31,25 +31,25 @@
   </div>
 </div>
 <div class="control-group">
-  <label class="control-label" for="order[bill_address_attributes][city]">{{ 'address_page.city' | t }}</label>
+  <label class="control-label" for="order[bill_address_attributes][city]">{{ 'address_page.city' | translate }}</label>
   <div class="controls">
     <input name="order[bill_address_attributes][city]" value="{{current_order.bill_address.city}}" class="required" type="text">
   </div>
 </div>
 <div class="control-group">
-  <label class="control-label" for="order[bill_address_attributes][zipcode]">{{ 'address_page.zip' | t }}</label>
+  <label class="control-label" for="order[bill_address_attributes][zipcode]">{{ 'address_page.zip' | translate }}</label>
   <div class="controls">
     <input name="order[bill_address_attributes][zipcode]" value="{{current_order.bill_address.zipcode}}" class="required" type="text">
   </div>
 </div>
 <div class="control-group">
-  <label class="control-label" for="order[bill_address_attributes][country_id]">{{ 'address_page.country' | t }}</label>
+  <label class="control-label" for="order[bill_address_attributes][country_id]">{{ 'address_page.country' | translate }}</label>
   <div class="controls">
     {% collection_select "order[bill_address_attributes]" method:"country_id", collection:available_countries, value_method:'id', text_method:'name', options:"{selected: context['order'].bill_address.country.id}", html_options:"{id: 'bill_countries_dropdown', class:'countries_dropdown'}" %}
   </div>
 </div>
 <div class="control-group">
-  <label class="control-label" for="order[bill_address_attributes][state_id]">{{ 'address_page.state' | t }}</label>
+  <label class="control-label" for="order[bill_address_attributes][state_id]">{{ 'address_page.state' | translate }}</label>
   <div class="controls">
     <select id="bill_address_states_dropdown" name="order[bill_address_attributes][state_id]" value="{{current_order.bill_address.state.id}}" class="required">
       <option data-qrepeat="state states" data-qattr="value state.id" data-qtext="state.name"></option>

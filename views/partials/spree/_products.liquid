@@ -6,7 +6,7 @@
         <a href="{% url_helper path:product_path, object:product %}">{% image_for_product_tag style:product %}</a>
         <div class="caption">
             <a href="{% url_helper path:product_path, object:product %}"> <h5>{{ product.name }}</h5></a>
-            {{ 'products_page.price' | t }}: {{ product.price_with_currency }}
+            {{ 'products_page.price' | translate }}: {{ product.price_with_currency }}
         </div>
     </div>
 </div>

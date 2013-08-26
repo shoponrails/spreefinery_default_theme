@@ -1,6 +1,6 @@
 <input name="state" value="payment" type="hidden">
 
-<p>{{ 'delivery_page.select_shipping_method' | t }}</p>
+<p>{{ 'delivery_page.select_shipping_method' | translate }}</p>
 <table class="form">
     <tbody>
     {% for rate in order.rate_hash %}
